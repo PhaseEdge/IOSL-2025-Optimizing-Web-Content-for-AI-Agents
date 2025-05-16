@@ -2,9 +2,9 @@
 
 Branching structure
 
-main                            
-├── release                      
-│   ├── SPRINT-1                 
+main                              # Main production branch
+├── release                       # Sprint-based releases
+│   ├── SPRINT-1                  # Current active sprint
 │   │   ├── feature/IOSL-1/subs-tier-packages
 │   │   ├── improvement/IOSL-2/api-performance
 │   │   ├── bugfix/IOSL-3/fix-login-issue
@@ -16,7 +16,6 @@ main
 │   └── SPRINT-3
 │       └── feature/IOSL-8/new-payment-integration
 │
-├              
-└── development    # Pre-production testing
+├── development                   # Pre-production testing
 
 After each sprint merge current release/SPRINT to main.Then pull request master -> dev. create new release/SPRINT-...
