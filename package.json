@@ -1,0 +1,13 @@
+{
+  "name": "iosl-better-readability-llms",
+  "version": "1.0.0",
+  "description": "Improving readability for LLMs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
