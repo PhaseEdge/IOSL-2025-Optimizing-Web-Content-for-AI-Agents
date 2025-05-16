@@ -1,5 +1,14 @@
 # IOSL-2025-2026-Better-Readability-for-LLMs
 
+\*\*\* Requirements:
+
+1. Node.js
+
+\*\*\* To start the project
+
+1. npm install
+2. npm start
+
 Branching structure
 
 main # Main production branch
