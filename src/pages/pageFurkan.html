@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title itemprop="name">Page Furkan</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Page Furkan",
+        "description": "This is a basic page component created with Schema.org principles.",
+        "author": {
+          "@type": "Person",
+          "name": "Furkan Kaya",
+          "age": 27,
+          "sex": "Male",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Straße des 17. Juni 135",
+            "addressLocality": "Berlin",
+            "addressRegion": "DE",
+            "postalCode": "10623"
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div itemprop="mainEntity" itemscope itemtype="https://schema.org/CreativeWork">
+      <h1 itemprop="headline">Welcome to Page Furkan</h1>
+      <p itemprop="description">This is a basic page component.</p>
+    </div>
+    <footer>
+      <p>
+        Author:
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">Enes Furkan Kaya</span>
+        </span>
+      </p>
+    </footer>
+
+    <div itemscope itemtype="https://schema.org/Book">
+      <p>
+        <span itemprop="name">The Catcher in the Rye</span> — by <span itemprop="author">J.D. Salinger</span>. Here is
+        the book's <a itemprop="url" href="http://en.wikipedia.org/wiki/The_Catcher_in_the_Rye">Wikipedia page</a>.
+      </p>
+    </div>
+
+    <div itemscope itemtype="https://schema.org/Offer">
+      <p><span itemprop="name">Blend-O-Matic</span> — Price: <span itemprop="price">$19.95</span></p>
+      <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+        <img src="/images/four-stars.jpg" alt="4-star rating" />
+        <meta itemprop="ratingValue" content="4" />
+        <meta itemprop="bestRating" content="5" />
+        Based on <span itemprop="ratingCount">25</span> user ratings
+      </div>
+    </div>
+  </body>
+</html>

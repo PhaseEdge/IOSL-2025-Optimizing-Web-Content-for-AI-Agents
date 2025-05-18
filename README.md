@@ -7,7 +7,7 @@
 \*\*\* To start the project
 
 1. npm install
-2. npm start
+2. npm run dev (browser sync -> it will reload the content whenever you make changes and save them)
 
 Branching structure
 
