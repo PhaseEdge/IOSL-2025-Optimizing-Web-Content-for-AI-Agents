@@ -1,26 +1,39 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
-
-// AI Agent detection function, userAgent is String
-function detectAIAgent(userAgent) {
-  const aiNames = [
-    /OpenAI/i,
-    /ChatGPT/i
-  ];
-  return aiNames.some(ai => ai.test(userAgent));
-}
+const isBot = require('./functions/BotDetectionByHeader')
 
 const server = http.createServer((req, res) => {
   // detect AI Agent and log
-  //log full header
-  console.log('Headers:', req.headers);
-  const userAgent = req.headers['user-agent'] || 'Unknown';
-  const ip = req.socket.remoteAddress || 'Unknown IP';
-  const isAIAgent = detectAIAgent(userAgent);
-  
-  const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`;
-  console.log(logEntry);
+  console.log('Headers:', req.headers)
+  const userAgent = req.headers['user-agent'] || 'Unknown'
+  const ip = req.socket.remoteAddress || 'Unknown IP'
+  const isAIAgent = detectAIAgent(userAgent)
+
+  if (isBot(userAgent) || hasSuspiciousHeaders(req.headers)) {
+    res.writeHead(302, { Location: '/furkan' })
+    res.end()
+    return
+  }
+
+  /* 
+  // **** Client-side POST check via JavaScript **** (Maybe TODO)
+  <scrpit>
+    fetch('/check-post', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ test: 'test' })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error))
+    </script>
+  */
+
+  const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
+  console.log(logEntry)
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     res.end('Welcome to My App')
