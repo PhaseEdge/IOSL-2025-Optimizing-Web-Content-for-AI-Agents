@@ -2,15 +2,16 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 const isBot = require('./functions/BotDetectionByHeader')
+const hasSuspiciousHeaders = require('./functions/BotDetectionByMissingInfo')
 
 const server = http.createServer((req, res) => {
   // detect AI Agent and log
   console.log('Headers:', req.headers)
   const userAgent = req.headers['user-agent'] || 'Unknown'
   const ip = req.socket.remoteAddress || 'Unknown IP'
-  const isAIAgent = detectAIAgent(userAgent)
+  const isAIAgent = isBot(userAgent)
 
-  if (isBot(userAgent) || hasSuspiciousHeaders(req.headers)) {
+  if (isAIAgent || hasSuspiciousHeaders(req.headers)) {
     res.writeHead(302, { Location: '/furkan' })
     res.end()
     return
