@@ -2,15 +2,16 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 const isBot = require('./functions/BotDetectionByHeader')
+const hasSuspiciousHeaders = require('./functions/BotDetectionByMissingInfo')
 
 const server = http.createServer((req, res) => {
   // detect AI Agent and log
   console.log('Headers:', req.headers)
   const userAgent = req.headers['user-agent'] || 'Unknown'
   const ip = req.socket.remoteAddress || 'Unknown IP'
-  const isAIAgent = detectAIAgent(userAgent)
+  const isAIAgent = isBot(userAgent)
 
-  if (isBot(userAgent) || hasSuspiciousHeaders(req.headers)) {
+  if (isAIAgent || hasSuspiciousHeaders(req.headers)) {
     res.writeHead(302, { Location: '/furkan' })
     res.end()
     return
@@ -50,6 +51,28 @@ const server = http.createServer((req, res) => {
     })
   } else if (req.url === '/colin') {
     const filePath = path.join(__dirname, 'pages', 'pageColin.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/Tuberlinlandia') {
+    const filePath = path.join(__dirname, 'pages', 'imaginaryCountry.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/Tuberlinlandia-with-microdata') {
+    const filePath = path.join(__dirname, 'pages', 'imaginaryCountryMicrodata.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
