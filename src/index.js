@@ -82,6 +82,28 @@ const server = http.createServer((req, res) => {
         res.end(data)
       }
     })
+  } else if (req.url === '/Tuberlinlandia-with-microdata-and-json-ld') {
+    const filePath = path.join(__dirname, 'pages', 'imaginaryCountryJSONLDAndMicrodata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/Tuberlinlandia-with-json-ld') {
+    const filePath = path.join(__dirname, 'pages', 'imaginaryCountryJSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
   } else if (req.url.startsWith('/images/')) {
     const filePath = path.join(__dirname, req.url)
     fs.readFile(filePath, (err, data) => {
