@@ -1,10 +1,18 @@
-#%%
-# 1 install required packakges
-!pip install openai
-!pip install crawl4ai
+import json
+from datetime import datetime
+
+def log_experiment(website: str, query: str, model: str, output: str, filename: str = "experiments.jsonl"):
+    entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "website": website,
+        "query": query,
+        "model": model,
+        "output": output
+    }
+    with open(filename, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
 
 
-#%%
 # 2 Dependencies
 import openai
 import asyncio
@@ -14,7 +22,6 @@ import json
 from datetime import datetime
 
 
-#%%
 # 3 Configuration
 OPENAI_API_KEY = ""
 LOCALHOST_URL = "http://localhost:3000/colin"
@@ -22,8 +29,6 @@ PROMPT_PATH = "../src/prompts/summary_prompt.txt"
 OUTPUT_PATH = "../src/llm_outputs"
 
 
-
-#%%
 # 4 Prompt Management
 class PromptManager:
     def __init__(self, prompt_path):
@@ -41,7 +46,7 @@ class PromptManager:
 prompt_manager = PromptManager(PROMPT_PATH)
 current_prompt = prompt_manager.load_prompt()
 print(f"✓ Loaded prompt: {current_prompt[:100]}{'...' if len(current_prompt) > 100 else ''}")
-# %%
+
 # 5 Web crawler
 class WebContentCrawler:
     def __init__(self):
@@ -80,7 +85,6 @@ crawler = WebContentCrawler()
 print("✓ Web crawler initialized")
 
 
-# %%
 # 6 LLM Client openAI !
 class LLMClient:
     def __init__(self, api_key, default_model="gpt-4.1-mini"):
@@ -132,9 +136,6 @@ llm_client = LLMClient(OPENAI_API_KEY)
 available_models = llm_client.list_available_models()
 print(f"✓ LLM client initialized. Available models: {available_models}")
 
-
-
-# %%
 # 7 File Output Manager
 class OutputManager:
     def __init__(self, output_dir):
@@ -177,7 +178,6 @@ class OutputManager:
 output_manager = OutputManager(OUTPUT_PATH)
 print("✓ Output manager initialized")
 
-# %%
 # 8 Main Pipeline Execution
 async def run_pipeline():
     """Execute the complete pipeline"""
@@ -224,7 +224,6 @@ async def run_pipeline():
         }
     }
 
-# %%
 #---------------------------------------------------------
 #Run the pipeline  --> Uncomment the next line to execute 
 result = asyncio.run(run_pipeline())
@@ -233,7 +232,6 @@ result = asyncio.run(run_pipeline())
 ##crawl_result = await crawler.crawl_content(LOCALHOST_URL)
 #print("Crawled content length:", len(crawl_result['content']) if crawl_result['success'] else "Failed")
 
-# %%
 
 # 9 Utility Functions for Testing
 def test_components():
