@@ -5,6 +5,7 @@ const isBot = require('./functions/BotDetectionByHeader')
 const hasSuspiciousHeaders = require('./functions/BotDetectionByMissingInfo')
 
 const server = http.createServer((req, res) => {
+  console.log(req.url, 'reql*****')
   // detect AI Agent and log
   console.log('Headers:', req.headers)
   const userAgent = req.headers['user-agent'] || 'Unknown'
@@ -32,6 +33,35 @@ const server = http.createServer((req, res) => {
     .catch(error => console.error('Error:', error))
     </script>
   */
+
+  const mimeTypes = {
+    '.html': 'text/html',
+    '.css': 'text/css',
+    '.js': 'application/javascript',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon'
+  }
+
+  const ext = path.extname(req.url)
+  const mimeType = mimeTypes[ext]
+
+  if (mimeType) {
+    const filePath = path.join(__dirname, req.url)
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('File not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': mimeType })
+        res.end(data)
+      }
+    })
+    return
+  }
 
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
@@ -71,6 +101,17 @@ const server = http.createServer((req, res) => {
         res.end(data)
       }
     })
+  } else if (req.url === '/inland') {
+    const filePath = path.join(__dirname, 'pages', 'inland.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
   } else if (req.url === '/Tuberlinlandia-with-microdata') {
     const filePath = path.join(__dirname, 'pages', 'imaginaryCountryMicrodata.html')
     fs.readFile(filePath, (err, data) => {
@@ -101,6 +142,17 @@ const server = http.createServer((req, res) => {
         res.end('Page not found')
       } else {
         res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url.startsWith('/css/')) {
+    const filePath = path.join(__dirname, 'css', path.basename(req.url))
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('CSS not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/css' })
         res.end(data)
       }
     })
