@@ -11299,16 +11299,16 @@ a.ardplayer-sharing-button:hover:before {
   overflow: hidden auto;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller: :-webkit-scrollbar {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller::-webkit-scrollbar {
   width: 4px;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller: :-webkit-scrollbar-track {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller::-webkit-scrollbar-track {
   background: var(--ardplayer-color-light-transparent-90);
   border-radius: 4px;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller: :-webkit-scrollbar-thumb {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .adrp-jpmrk-scroller::-webkit-scrollbar-thumb {
   background-color: var(--ardplayer-color-lightest);
   border-radius: 4px;
 }
@@ -11337,7 +11337,7 @@ a.ardplayer-sharing-button:hover:before {
   margin-top: 0 !important;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter: focus,.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter:hover {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter:focus,.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter:hover {
   background-color: var(--ardplayer-color-primary);
 }
 
@@ -11397,7 +11397,7 @@ a.ardplayer-sharing-button:hover:before {
   margin: 8px 0;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img: first-child {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img:first-child {
   margin-left: 8px;
 }
 
@@ -11437,7 +11437,7 @@ a.ardplayer-sharing-button:hover:before {
   overflow: hidden;
 }
 
-.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-title p: only-child {
+.ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-title p:only-child {
   -webkit-line-clamp: 3;
 }
 
@@ -11867,7 +11867,7 @@ a.ardplayer-sharing-button:hover:before {
   margin: 6px 0;
 }
 
-.ardplayer.ardplayer-m .ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img: first-child,.ardplayer.ardplayer-sm .ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img:first-child {
+.ardplayer.ardplayer-m .ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img:first-child,.ardplayer.ardplayer-sm .ardplayer-viewport-addon-overlays .ardplayer-addon-sprungmarken-overlays .ardplayer-popup-jumpmark.--condensed .ardp-jpmrk-chapter .ardp-jpmrk-img:first-child {
   margin-left: 6px;
 }
 
@@ -24673,7 +24673,7 @@ _:future {
   margin-inline-start: var(--swiper-centered-offset-before);
 }
 
-.swiper-css-mode.swiper-centered.swiper-horizontal>.swiper-wrapper: before {
+.swiper-css-mode.swiper-centered.swiper-horizontal>.swiper-wrapper:before {
   height: 100%;
   min-height: 1px;
   width: var(--swiper-centered-offset-after);
@@ -24683,7 +24683,7 @@ _:future {
   margin-block-start: var(--swiper-centered-offset-before);
 }
 
-.swiper-css-mode.swiper-centered.swiper-vertical>.swiper-wrapper: before {
+.swiper-css-mode.swiper-centered.swiper-vertical>.swiper-wrapper:before {
   width: 100%;
   min-width: 1px;
   height: var(--swiper-centered-offset-after);

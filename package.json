@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "concurrently \"node src/index.js\" \"browser-sync start --proxy 'localhost:3000' --files 'src/**/*.*' --port 3001\""
+    "dev": "concurrently \"node src/index.js\" \"browser-sync start --proxy 'localhost:3000' --files 'src/**/*.*' --port 3001\"",
+    "dev:win": "concurrently \"node src/index.js\" \"browser-sync start --proxy localhost:3000 --files src/**/*.* --port 3001\""
   },
   "keywords": [],
   "author": "",
