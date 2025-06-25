@@ -1,4 +1,4 @@
-export const tablePage1Data = [
+module.exports = [
   {
     id: 1,
     first_name: 'Forester',

@@ -3,6 +3,8 @@ const fs = require('fs')
 const path = require('path')
 const isBot = require('./functions/BotDetectionByHeader')
 const hasSuspiciousHeaders = require('./functions/BotDetectionByMissingInfo')
+const generateLLMFile = require('./functions/GenerateLLMFile')
+const tablePage1Data = require('./data/tablePage1Data.js')
 
 const server = http.createServer((req, res) => {
   console.log(req.url, 'reql*****')
@@ -13,7 +15,7 @@ const server = http.createServer((req, res) => {
   const isAIAgent = isBot(userAgent)
 
   if (isAIAgent || hasSuspiciousHeaders(req.headers)) {
-    res.writeHead(302, { Location: '/api/people/table-page-1' })
+    res.writeHead(302, { Location: '/api/people/table-page-1-llm' })
     res.end()
     return
   }
@@ -50,52 +52,52 @@ const server = http.createServer((req, res) => {
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
 
-  if (req.url === '/api/people/table-page-1') {
-    const peopleTxtPath = path.join(__dirname, 'pages/pages-with-table/tablePage1/tablePage.llm.txt')
-    fs.readFile(peopleTxtPath, 'utf8', (err, data) => {
+  if (req.url === '/api/people/table-page-1-llm') {
+    const dataArray = tablePage1Data
+    const llmFilePath = path.join(__dirname, 'data', 'tablePage1Data.llm.txt')
+
+    console.log(dataArray, 'dataArray****')
+
+    // Generate the llm.txt file from the data array
+    generateLLMFile(fs, dataArray, llmFilePath)
+
+    // Serve the generated llm.txt file
+    fs.readFile(llmFilePath, 'utf8', (err, data) => {
       if (err) {
-        res.writeHead(500, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({ error: 'Could not read data file' }))
+        res.writeHead(500, { 'Content-Type': 'text/plain' })
+        res.end('Could not read llm.txt file')
         return
       }
-      // Parse the file into objects
-      const people = []
-      const records = data
-        .split('---')
-        .map(r => r.trim())
-        .filter(Boolean)
-      for (const record of records) {
-        const obj = {}
-        record.split('\n').forEach(line => {
-          const [key, ...rest] = line.split(':')
-          if (key && rest.length) {
-            const value = rest.join(':').trim()
-            switch (key.trim()) {
-              case 'ID':
-                obj.id = Number(value)
-                break
-              case 'First Name':
-                obj.first_name = value
-                break
-              case 'Last Name':
-                obj.last_name = value
-                break
-              case 'Email':
-                obj.email = value
-                break
-              case 'Gender':
-                obj.gender = value
-                break
-              case 'IP Address':
-                obj.ip_address = value
-                break
-            }
-          }
-        })
-        if (Object.keys(obj).length) people.push(obj)
+      res.writeHead(200, { 'Content-Type': 'text/plain' })
+      res.end(data)
+    })
+    return
+  } else if (req.url === '/llm-preview') {
+    const filePath = path.join(__dirname, 'data', 'tablePage1Data.llm.txt')
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'text/html' })
+        res.end('<h1>Could not read llm.txt file</h1>')
+        return
       }
-      res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify(people))
+      res.writeHead(200, { 'Content-Type': 'text/html' })
+      res.end(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>LLM File Preview</title>
+          <style>
+            body { font-family: monospace; background: #f8f8f8; padding: 2em; }
+            pre { background: #fff; border: 1px solid #ccc; padding: 1em; overflow-x: auto; }
+          </style>
+        </head>
+        <body>
+          <h1>LLM File Preview</h1>
+          <pre>${data.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+        </body>
+      </html>
+    `)
     })
     return
   }
