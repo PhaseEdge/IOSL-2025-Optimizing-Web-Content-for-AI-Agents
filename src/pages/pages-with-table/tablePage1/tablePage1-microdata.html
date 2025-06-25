@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuberlinlandia - Wikipedia</title>
+    <!-- Schema.org metadata for a table of people -->
+    <meta itemprop="name" content="Tuberlinlandia People Table" />
+    <meta itemprop="description" content="A table listing people from Tuberlinlandia with their details." />
+  </head>
+  <body itemscope itemtype="https://schema.org/ItemList">
+    <div class="container">
+      <h1 itemprop="name">Tuberlinlandia People</h1>
+
+      <div class="section">
+        <h2>People Table</h2>
+        <table id="people-table" border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>IP Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module">
+      import { tablePage1Data } from '../data/tablePage1Data.js'
+      const tbody = document.querySelector('#people-table tbody')
+
+      tablePage1Data.forEach((person, idx) => {
+        const tr = document.createElement('tr')
+        tr.setAttribute('itemscope', '')
+        tr.setAttribute('itemprop', 'itemListElement')
+        tr.setAttribute('itemtype', 'https://schema.org/Person')
+        tr.innerHTML = `
+          <td itemprop="identifier">${person.id}</td>
+          <td itemprop="givenName">${person.first_name}</td>
+          <td itemprop="familyName">${person.last_name}</td>
+          <td itemprop="email">${person.email}</td>
+          <td itemprop="gender">${person.gender}</td>
+          <td itemprop="ipAddress">${person.ip_address}</td>
+        `
+        tbody.appendChild(tr)
+      })
+    </script>
+  </body>
+</html>

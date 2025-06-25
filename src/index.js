@@ -13,26 +13,10 @@ const server = http.createServer((req, res) => {
   const isAIAgent = isBot(userAgent)
 
   if (isAIAgent || hasSuspiciousHeaders(req.headers)) {
-    res.writeHead(302, { Location: '/furkan' })
+    res.writeHead(302, { Location: '/api/people/table-page-1' })
     res.end()
     return
   }
-
-  /* 
-  // **** Client-side POST check via JavaScript **** (Maybe TODO)
-  <scrpit>
-    fetch('/check-post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ test: 'test' })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error))
-    </script>
-  */
 
   const mimeTypes = {
     '.html': 'text/html',
@@ -65,6 +49,56 @@ const server = http.createServer((req, res) => {
 
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
+
+  if (req.url === '/api/people/table-page-1') {
+    const peopleTxtPath = path.join(__dirname, 'pages/pages-with-table/tablePage1/tablePage.llm.txt')
+    fs.readFile(peopleTxtPath, 'utf8', (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'Could not read data file' }))
+        return
+      }
+      // Parse the file into objects
+      const people = []
+      const records = data
+        .split('---')
+        .map(r => r.trim())
+        .filter(Boolean)
+      for (const record of records) {
+        const obj = {}
+        record.split('\n').forEach(line => {
+          const [key, ...rest] = line.split(':')
+          if (key && rest.length) {
+            const value = rest.join(':').trim()
+            switch (key.trim()) {
+              case 'ID':
+                obj.id = Number(value)
+                break
+              case 'First Name':
+                obj.first_name = value
+                break
+              case 'Last Name':
+                obj.last_name = value
+                break
+              case 'Email':
+                obj.email = value
+                break
+              case 'Gender':
+                obj.gender = value
+                break
+              case 'IP Address':
+                obj.ip_address = value
+                break
+            }
+          }
+        })
+        if (Object.keys(obj).length) people.push(obj)
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify(people))
+    })
+    return
+  }
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     res.end('Welcome to My App')
@@ -92,6 +126,110 @@ const server = http.createServer((req, res) => {
     })
   } else if (req.url === '/Tuberlinlandia') {
     const filePath = path.join(__dirname, 'pages', 'imaginaryCountry.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1') {
+    const filePath = path.join(__dirname, 'pages/pages-with-table/tablePage1', 'tablePage1.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1/with-json-ld') {
+    const filePath = path.join(__dirname, 'pages/pages-with-table/tablePage1', 'tablePage1-json-ld.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1/with-microdata') {
+    const filePath = path.join(__dirname, 'pages/pages-with-table/tablePage1', 'tablePage1-microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1/with-json-ld-and-microdata') {
+    const filePath = path.join(__dirname, 'pages/pages-with-table/tablePage1', 'tablePage1-json-ld-and-microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1-pagination') {
+    const filePath = path.join(
+      __dirname,
+      'pages/pages-with-table/tablePage1WithPagination',
+      'tableWithPagination1.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1-pagination/with-json-ld') {
+    const filePath = path.join(
+      __dirname,
+      'pages/pages-with-table/tablePage1WithPagination',
+      'tableWithPagination1-json-ld.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1-pagination/with-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/pages-with-table/tablePage1WithPagination',
+      'tableWithPagination1-microdata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/table-page-1-pagination/with-json-ld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/pages-with-table/tablePage1WithPagination',
+      'tableWithPagination1-json-ld-and-microdata.html'
+    )
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })

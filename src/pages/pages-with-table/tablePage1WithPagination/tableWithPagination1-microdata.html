@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuberlinlandia - Wikipedia</title>
+  </head>
+  <body itemscope itemtype="https://schema.org/ItemList">
+    <meta itemprop="name" content="Tuberlinlandia People Table" />
+    <meta
+      itemprop="description"
+      content="A paginated table listing people from Tuberlinlandia with their details. Each page displays 20 people."
+    />
+    <meta itemprop="numberOfItems" content="100" />
+    <div class="container">
+      <h1 itemprop="name">Tuberlinlandia People</h1>
+
+      <div class="section">
+        <h2>People Table</h2>
+        <table id="people-table" border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>IP Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be inserted here -->
+          </tbody>
+        </table>
+        <nav id="pagination" style="margin-top: 1em" itemscope itemtype="https://schema.org/Pagination">
+          <!-- Pagination buttons will be inserted here -->
+        </nav>
+      </div>
+    </div>
+
+    <script type="module">
+      import { tablePage1Data } from '../data/tablePage1Data.js'
+      const tbody = document.querySelector('#people-table tbody')
+      const paginationDiv = document.getElementById('pagination')
+
+      const rowsPerPage = 20
+      let currentPage = 1
+      const totalPages = Math.ceil(tablePage1Data.length / rowsPerPage)
+
+      function renderTable(page) {
+        tbody.innerHTML = ''
+        const start = (page - 1) * rowsPerPage
+        const end = start + rowsPerPage
+        const pageRows = tablePage1Data.slice(start, end)
+        pageRows.forEach((person, idx) => {
+          const tr = document.createElement('tr')
+          tr.setAttribute('itemscope', '')
+          tr.setAttribute('itemprop', 'itemListElement')
+          tr.setAttribute('itemtype', 'https://schema.org/Person')
+          tr.innerHTML = `
+            <td itemprop="identifier">${person.id}</td>
+            <td itemprop="givenName">${person.first_name}</td>
+            <td itemprop="familyName">${person.last_name}</td>
+            <td itemprop="email">${person.email}</td>
+            <td itemprop="gender">${person.gender}</td>
+            <td itemprop="ipAddress">${person.ip_address}</td>
+          `
+          tbody.appendChild(tr)
+        })
+      }
+
+      function renderPagination() {
+        paginationDiv.innerHTML = ''
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button')
+          btn.setAttribute('itemprop', 'pagination')
+          btn.setAttribute('itemscope', '')
+          btn.setAttribute('itemtype', 'https://schema.org/Button')
+          btn.textContent = i
+          btn.disabled = i === currentPage
+          btn.addEventListener('click', () => {
+            currentPage = i
+            renderTable(currentPage)
+            renderPagination()
+          })
+          paginationDiv.appendChild(btn)
+        }
+        // Add current page info as microdata
+        const pageInfo = document.createElement('meta')
+        pageInfo.setAttribute('itemprop', 'currentPage')
+        pageInfo.content = currentPage
+        paginationDiv.appendChild(pageInfo)
+        const totalPageInfo = document.createElement('meta')
+        totalPageInfo.setAttribute('itemprop', 'totalPages')
+        totalPageInfo.content = totalPages
+        paginationDiv.appendChild(totalPageInfo)
+      }
+
+      renderTable(currentPage)
+      renderPagination()
+    </script>
+  </body>
+</html>
