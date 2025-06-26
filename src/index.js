@@ -52,11 +52,16 @@ const server = http.createServer((req, res) => {
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
 
+  if (req.url === '/api/people/table-page-1') {
+    const people = require('./data/tablePage1Data.js')
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify(people))
+    return
+  }
+
   if (req.url === '/api/people/table-page-1-llm') {
     const dataArray = tablePage1Data
     const llmFilePath = path.join(__dirname, 'data', 'tablePage1Data.llm.txt')
-
-    console.log(dataArray, 'dataArray****')
 
     // Generate the llm.txt file from the data array
     generateLLMFile(fs, dataArray, llmFilePath)

@@ -30,12 +30,14 @@
     </div>
 
     <script type="module">
-      import { tablePage1Data } from '../data/tablePage1Data.js'
-      const tbody = document.querySelector('#people-table tbody')
+      fetch('/api/people/table-page-1')
+        .then(res => res.json())
+        .then(tablePage1Data => {
+          const tbody = document.querySelector('#people-table tbody')
 
-      tablePage1Data.forEach(person => {
-        const tr = document.createElement('tr')
-        tr.innerHTML = `
+          tablePage1Data.forEach(person => {
+            const tr = document.createElement('tr')
+            tr.innerHTML = `
           <td>${person.id}</td>
           <td>${person.first_name}</td>
           <td>${person.last_name}</td>
@@ -43,8 +45,9 @@
           <td>${person.gender}</td>
           <td>${person.ip_address}</td>
         `
-        tbody.appendChild(tr)
-      })
+            tbody.appendChild(tr)
+          })
+        })
     </script>
   </body>
 </html>

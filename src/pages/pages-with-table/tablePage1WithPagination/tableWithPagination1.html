@@ -30,14 +30,13 @@
       </div>
     </div>
 
-    <script type="module">
-      import { tablePage1Data } from '../data/tablePage1Data.js'
+    <script>
       const tbody = document.querySelector('#people-table tbody')
       const paginationDiv = document.getElementById('pagination')
-
       const rowsPerPage = 20
       let currentPage = 1
-      const totalPages = Math.ceil(tablePage1Data.length / rowsPerPage)
+      let tablePage1Data = []
+      let totalPages = 1
 
       function renderTable(page) {
         tbody.innerHTML = ''
@@ -73,8 +72,14 @@
         }
       }
 
-      renderTable(currentPage)
-      renderPagination()
+      fetch('/api/people/table-page-1')
+        .then(res => res.json())
+        .then(data => {
+          tablePage1Data = data
+          totalPages = Math.ceil(tablePage1Data.length / rowsPerPage)
+          renderTable(currentPage)
+          renderPagination()
+        })
     </script>
   </body>
 </html>
