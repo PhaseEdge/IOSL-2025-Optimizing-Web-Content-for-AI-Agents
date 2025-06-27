@@ -181,7 +181,7 @@ const server = http.createServer((req, res) => {
     })
     }
     else if (req.url === '/inland-1-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inland1JSONLD.html')
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle1JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -193,7 +193,7 @@ const server = http.createServer((req, res) => {
     })
     }
     else if (req.url === '/inland-2-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inland2JSONLD.html')
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle2JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -205,7 +205,7 @@ const server = http.createServer((req, res) => {
     })
     }
     else if (req.url === '/inland-3-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inland3JSONLD.html')
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle3JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -217,7 +217,7 @@ const server = http.createServer((req, res) => {
     })
     }
     else if (req.url === '/inland-4-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inland4JSONLD.html')
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle4JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -229,7 +229,7 @@ const server = http.createServer((req, res) => {
     })
     }
     else if (req.url === '/inland-5-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inland5JSONLD.html')
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle5JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
