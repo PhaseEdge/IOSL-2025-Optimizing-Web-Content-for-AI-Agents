@@ -1,1 +1,7 @@
+# misc
+node_modules/
+dist/
 .env
+.next/
+.DS_Store
+**/.DS_Store

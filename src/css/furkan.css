@@ -1,0 +1,42 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #222;
+  margin: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h1 {
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 0.3em;
+}
+
+.infobox {
+  float: right;
+  width: 300px;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin: 0 0 1em 1em;
+}
+
+.infobox th {
+  background-color: #ccc;
+  text-align: left;
+}
+
+.infobox td {
+  padding: 4px;
+}
+
+.section {
+  margin-top: 2em;
+}

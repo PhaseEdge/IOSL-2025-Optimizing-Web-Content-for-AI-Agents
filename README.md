@@ -8,6 +8,8 @@
 
 1. npm install
 2. npm run dev (browser sync -> it will reload the content whenever you make changes and save them)
+OR on windows 
+2. npm run dev:win
 
 Branching structure
 

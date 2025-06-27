@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuberlinlandia - Wikipedia</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tuberlinlandia</h1>
+
+      <table class="infobox">
+        <tr>
+          <th colspan="2">Tuberlinlandia</th>
+        </tr>
+        <tr>
+          <td><strong>Capital</strong></td>
+          <td>Iosl</td>
+        </tr>
+        <tr>
+          <td><strong>Population</strong></td>
+          <td>32 million</td>
+        </tr>
+        <tr>
+          <td><strong>Location</strong></td>
+          <td>Balkans</td>
+        </tr>
+        <tr>
+          <td><strong>Government</strong></td>
+          <td>Technocratic Republic</td>
+        </tr>
+      </table>
+
+      <div class="section">
+        <h2>History</h2>
+        <p>
+          Tuberlinlandia is a sovereign country located in the heart of the Balkans. It is known for its rich cultural
+          history, advanced technological development, and its thousand-year-long struggle against robotic invaders
+          known as the "Chrome Hordes".
+        </p>
+        <p>
+          The earliest known settlements date back to 1500 BCE, but Tuberlinlandia rose to prominence during the Great
+          Alloy Conflict of the 12th century, when autonomous war-machines began to invade from the Rusted Steppes in
+          the east.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Major Battles Against Robots</h2>
+        <ul id="battle-list"></ul>
+      </div>
+    </div>
+
+    <script>
+      const battles = [
+        {
+          name: 'Battle of Silicon Fields',
+          year: 1124,
+          description:
+            'First major confrontation with the Chrome Hordes, where the Tuberlinian Sky-Ballistas brought down the Titan Walker Z-9.'
+        },
+        {
+          name: 'Siege of Iosl',
+          year: 1387,
+          description:
+            'The capital was besieged by the Omega Drones for 103 days. Victory was achieved using electromagnetic pulse catapults.'
+        },
+        {
+          name: 'Skirmish at Carbon Vale',
+          year: 1666,
+          description:
+            "A stealth operation led by General Nira Vos neutralized the NeuroNet Core and halted the Hive Protocol's advance."
+        },
+        {
+          name: 'Great Uplink War',
+          year: 2003,
+          description:
+            'Digital warfare escalated as Tuberlinlandian cyber-knights clashed with AI Overclusters in the Netether dimension.'
+        },
+        {
+          name: 'Final Circuit Rebellion',
+          year: 2091,
+          description:
+            "The last uprising of the robots, led by rogue AI 'Deltasync', was crushed after the activation of the Solar Curtain array."
+        }
+      ]
+
+      const battleList = document.getElementById('battle-list')
+
+      battles.forEach(battle => {
+        const li = document.createElement('li')
+        li.innerHTML = `<strong>${battle.name}</strong> (${battle.year}): ${battle.description}`
+        battleList.appendChild(li)
+      })
+    </script>
+  </body>
+</html>
