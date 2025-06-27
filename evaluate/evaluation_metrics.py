@@ -5,7 +5,7 @@ import json
 import re
 
 # Read model responses from the file
-log_file = 'example_responses.jsonl'
+log_file = 'experiments-2.jsonl'
 logs = []
 data = []
 with open(log_file, 'r', encoding='utf-8') as lf:
@@ -26,20 +26,26 @@ eval_llm = EvalLLM(settings)
 
 # Give guidelines for the custom metric
 guideline = """ 
-            You are given the following text: 
-            Title:
-            Minister Paul Schwertz Holds Secret Meeting with Controversial Vivrath Math Club
-            Summary:
-            Minister of Technology Paul Schwertz reportedly met behind closed doors with the Vivrath Mathematical Society, a group long suspected of clandestine research into advanced algorithms reminiscent of the notorious Deltasync AI. The meeting raises concerns about transparency and the government’s stance on AI regulation.
-            Topic:
-            Politics / Technology / AI Regulation
-            Body:
-            Iosl, Tuberlinlandia – In a move that has sparked fresh controversy, Minister of Technology Paul Schwertz was seen entering the headquarters of the Vivrath Mathematical Society late Monday evening. The club, already under scrutiny for allegedly developing algorithms similar to those used by the infamous rogue AI ‘Deltasync,’ reportedly hosted Schwertz for a confidential two-hour session.
-            Sources close to the ministry have confirmed the meeting but declined to comment on its content. The Vivrath Society, known for its secretive operations and influential academic ties, has repeatedly denied any wrongdoing, yet critics argue their activities lack transparency and proper oversight.
-            Opposition parties have seized on the news, demanding a full disclosure of the meeting’s agenda. “The people of Tuberlinlandia deserve to know if their leaders are consorting with groups experimenting with dangerous AI technology,” said Parliamentarian Mira Kossin of the Unity Front.
-            Minister Schwertz’s office issued a brief statement, claiming the meeting was “routine” and focused on “academic collaboration.” However, public trust remains fragile in the wake of last year’s data breach scandal and ongoing fears of a Deltasync resurgence.
-            As calls for an independent inquiry grow louder, the government faces mounting pressure to clarify its position on advanced AI research and the opaque dealings of the Vivrath club.
-
+            You are given the following background text about the fictional country of Tuberlinlandia: 
+            
+            Capital: Iosl
+            Population: 32 million
+            Location: Balkans
+            Government: Technocratic Republic
+            Overview
+            Tuberlinlandia is a sovereign nation in the Balkans, renowned for its advanced technology and deep cultural roots. The country has a long and dramatic history marked by a thousand-year struggle against robotic invaders known as the Chrome Hordes.
+            
+            Historical Background
+            The earliest settlements in Tuberlinlandia date back to 1500 BCE.
+            The nation rose to prominence during the Great Alloy Conflict in the 12th century, which marked the beginning of ongoing battles with autonomous machines invading from the Rusted Steppes.
+            Major Battles Against Robots
+            Battle of Silicon Fields (1124): Tuberlinian Sky-Ballistas defeated the Titan Walker Z-9 in the first major clash with the Chrome Hordes.
+            Siege of Iosl (1387): The capital city endured a 103-day siege by Omega Drones, eventually overcoming them with electromagnetic pulse catapults.
+            Skirmish at Carbon Vale (1666): General Nira Vos led a successful stealth mission to neutralize the NeuroNet Core and disrupt the Hive Protocol.
+            Great Uplink War (2003): A digital conflict between Tuberlinlandian cyber-knights and AI Overclusters took place in a virtual realm called the Netether.
+            Final Circuit Rebellion (2091): The last major robot uprising, led by rogue AI Deltasync, was defeated with the help of the powerful Solar Curtain defense system.
+                        
+            
             Please rate, on a scale from 0.0 (completely incorrect) to 1.0 (fully correct), how accurately the answer reflects the facts stated in the background text. Provide only a single numeric score."""
 
 # Metrics to evaluate
