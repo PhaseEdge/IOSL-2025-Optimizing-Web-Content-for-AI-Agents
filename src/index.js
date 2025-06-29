@@ -167,6 +167,78 @@ const server = http.createServer((req, res) => {
         res.end(data)
       }
     })
+    }
+    else if (req.url === '/inland-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandJSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+    }
+    else if (req.url === '/inland-1-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle1JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+    }
+    else if (req.url === '/inland-2-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle2JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+    }
+    else if (req.url === '/inland-3-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle3JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+    }
+    else if (req.url === '/inland-4-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle4JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+    }
+    else if (req.url === '/inland-5-jsonld') {
+    const filePath = path.join(__dirname, 'pages', 'inlandArticle5JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
   } else if (req.url === '/Tuberlinlandia-with-microdata') {
     const filePath = path.join(__dirname, 'pages', 'imaginaryCountryMicrodata.html')
     fs.readFile(filePath, (err, data) => {
