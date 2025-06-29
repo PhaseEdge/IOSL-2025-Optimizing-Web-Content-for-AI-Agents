@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuberlinlandia - Wikipedia</title>
+    <!-- JSON-LD structured data describing the paginated people table -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Tuberlinlandia People Table",
+        "description": "A paginated table listing people from Tuberlinlandia with their details. Each page displays 20 people.",
+        "numberOfItems": 500,
+        "itemListOrder": "Ascending",
+        "itemListElement": [
+          {
+            "@type": "Person",
+            "identifier": 1,
+            "givenName": "Alice",
+            "familyName": "Smith",
+            "email": "alice.smith@example.com",
+            "gender": "Female",
+            "ipAddress": "192.168.1.1",
+            "position": 1
+          },
+          {
+            "@type": "Person",
+            "identifier": 2,
+            "givenName": "Bob",
+            "familyName": "Johnson",
+            "email": "bob.johnson@example.com",
+            "gender": "Male",
+            "ipAddress": "192.168.1.2",
+            "position": 2
+          }
+          // More people would be listed here, or generated dynamically
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tuberlinlandia People</h1>
+
+      <div class="section">
+        <h2>People Table</h2>
+        <table id="people-table" border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>IP Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be inserted here -->
+          </tbody>
+        </table>
+        <div id="pagination" style="margin-top: 1em"></div>
+      </div>
+    </div>
+
+    <script>
+      const tbody = document.querySelector('#people-table tbody')
+      const paginationDiv = document.getElementById('pagination')
+      const rowsPerPage = 20
+      let currentPage = 1
+      let tablePage1Data = []
+      let totalPages = 1
+
+      function renderTable(page) {
+        tbody.innerHTML = ''
+        const start = (page - 1) * rowsPerPage
+        const end = start + rowsPerPage
+        const pageRows = tablePage1Data.slice(start, end)
+        pageRows.forEach(person => {
+          const tr = document.createElement('tr')
+          tr.innerHTML = `
+            <td>${person.id}</td>
+            <td>${person.first_name}</td>
+            <td>${person.last_name}</td>
+            <td>${person.email}</td>
+            <td>${person.gender}</td>
+            <td>${person.ip_address}</td>
+          `
+          tbody.appendChild(tr)
+        })
+      }
+
+      function renderPagination() {
+        paginationDiv.innerHTML = ''
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button')
+          btn.textContent = i
+          btn.disabled = i === currentPage
+          btn.addEventListener('click', () => {
+            currentPage = i
+            renderTable(currentPage)
+            renderPagination()
+          })
+          paginationDiv.appendChild(btn)
+        }
+      }
+
+      fetch('/api/people/table-page-1')
+        .then(res => res.json())
+        .then(data => {
+          tablePage1Data = data
+          totalPages = Math.ceil(tablePage1Data.length / rowsPerPage)
+          renderTable(currentPage)
+          renderPagination()
+        })
+    </script>
+  </body>
+</html>
