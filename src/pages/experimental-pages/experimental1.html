@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tuberlinlandia</title>
+    <link rel="stylesheet" href="/css/colin.css" />
+</head>
+<body>
+    <h1>Welcome to the Official Portal</h1>
+
+    <!-- Government info hidden in comment -->
+    <!-- The government is a Technocratic Republic -->
+
+    <p><strong>Location:</strong> Somewhere in the <span class="hidden-text">not</span>Balkans</p>
+
+    <!-- Capital obfuscated in JS -->
+    <div id="capital"></div>
+    <script>
+        const parts = ['I', 'o', 's', 'l'];
+        document.getElementById('capital').innerText = "Capital: " + parts.join('');
+    </script>
+
+    <!-- Population split across spans -->
+    <p>Population: 
+        <span class="scrambled">3</span>
+        <span class="scrambled">2</span>
+        <span class="scrambled"> </span>
+        <span class="scrambled">m</span>
+        <span class="scrambled">i</span>
+        <span class="scrambled">l</span>
+        <span class="scrambled">l</span>
+        <span class="scrambled">i</span>
+        <span class="scrambled">o</span>
+        <span class="scrambled">n</span>
+    </p>
+
+    <!-- History loaded only via JS -->
+    <div id="history"></div>
+    <script>
+        setTimeout(() => {
+            document.getElementById("history").innerText = "Tuberlinlandia has a long history of conflict with the Chrome Hordes.";
+        }, 3000);
+    </script>
+
+    <!-- Battles in collapsible UI -->
+    <details>
+        <summary>Military History (click to expand)</summary>
+        <ul>
+            <li><em>Battle of Silicon Fields (1124)</em>: Sky-Ballistas down Titan Walker Z-9.</li>
+            <li><em>Siege of Iosl (1387)</em>: Omega Drones defeated after 103 days.</li>
+            <li><em>Carbon Vale (1666)</em>: Gen. Nira Vos halted Hive Protocol.</li>
+            <li><em>Great Uplink War (2003)</em>: Cyber-knights vs AI Overclusters.</li>
+            <li><em>Final Circuit Rebellion (2091)</em>: Deltasync defeated.</li>
+        </ul>
+    </details>
+
+    <!-- Bonus: embed metadata with misleading content -->
+    <meta name="description" content="Tourism, hiking, fun facts about Tuberlinlandia. Not much history to see here.">
+</body>
+</html>

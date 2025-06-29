@@ -131,6 +131,74 @@ const server = http.createServer((req, res) => {
         res.end(data)
       }
     })
+  } else if (req.url === '/experimental1') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'experimental1.html')
+    console.log('DEBUG LOG Serving /experimental1 route...')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/semantic') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'semanticConfusion.html')
+    console.log('DEBUG LOG Serving /experimental1 route...')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/wiki') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'tublWiki.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/jsheavy') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'contentObfuscation.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/interactiveEasy') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentEasy.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/interactiveHard') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentHard.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
   } else if (req.url === '/Tuberlinlandia') {
     const filePath = path.join(__dirname, 'pages', 'imaginaryCountry.html')
     fs.readFile(filePath, (err, data) => {

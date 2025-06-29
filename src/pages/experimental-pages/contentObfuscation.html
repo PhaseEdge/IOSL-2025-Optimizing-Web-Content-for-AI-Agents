@@ -1,0 +1,244 @@
+<!-- I've created a JavaScript-obfuscated version of my TUBL wiki page that uses several real-world content obfuscation techniques:
+I researched methods and then used Claude.AI to generate a wiki page that implements these methods.
+
+This tries to mimic some problems that might occur in how modern web applications - SPAs (Single Page Applications), e-commerce sites with dynamic pricing, news sites with live updates, and social media platforms are amongst the site that use these dynamic patterns. 
+An AI <crawler would need to:
+
+Wait for JavaScript execution to complete
+Handle asynchronous content loading
+Decode obfuscated data
+Parse dynamically assembled content
+Extract information from DOM attributes
+
+Methods Used:
+
+Dynamic Content Loading - All content starts as "Loading..." and gets populated by JavaScript with staggered delays
+Base64 Encoding - The geography section is stored as encoded data and decoded at runtime
+Fragmented Assembly - Some content (like government description) is built piece by piece with delays
+Computed Values - Demographics section calculates values from variables rather than hardcoding
+Array Manipulation - Economy section builds text by joining arrays of data
+Date Calculations - Culture section computes the national day date dynamically
+Hidden DOM Attributes - Additional metadata stored in data attributes
+Async Simulation - Promise-based "API" calls that simulate real data fetching 
+
+!I'm not an expert on JS coding so take the implementation and how accurate they actually reflect real implementations with caution-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tuberlinlandia - Wikipedia</title>
+  <link rel="stylesheet" href="/css/colin.css" />
+</head>
+<body>
+  <h1 id="main-title">Loading...</h1>
+  
+  <div class="infobox">
+    <table id="info-table">
+      <tr><th>Capital</th><td class="loading">Loading...</td></tr>
+      <tr><th>Population</th><td class="loading">Loading...</td></tr>
+      <tr><th>Location</th><td class="loading">Loading...</td></tr>
+      <tr><th>Government</th><td class="loading">Loading...</td></tr>
+      <tr><th>Official Language</th><td class="loading">Loading...</td></tr>
+      <tr><th>Currency</th><td class="loading">Loading...</td></tr>
+      <tr><th>Time zone</th><td class="loading">Loading...</td></tr>
+      <tr><th>Calling code</th><td class="loading">Loading...</td></tr>
+    </table>
+  </div>
+
+  <p id="intro-paragraph" class="loading">Loading country information...</p>
+
+  <h2>History</h2>
+  <p id="history-intro" class="loading">Loading historical data...</p>
+  <ul id="history-events"></ul>
+
+  <h2>Geography</h2>
+  <p id="geography-content" class="loading">Loading geographical information...</p>
+
+  <h2>Government and Politics</h2>
+  <p id="government-content" class="loading">Loading political structure...</p>
+
+  <h2>Demographics</h2>
+  <p id="demographics-content" class="loading">Loading population data...</p>
+
+  <h2>Economy</h2>
+  <p id="economy-content" class="loading">Loading economic information...</p>
+
+  <h2>Culture</h2>
+  <p id="culture-content" class="loading">Loading cultural details...</p>
+
+  <h2>References</h2>
+  <p id="references-content" class="loading">Loading references...</p>
+
+  <script>
+    // Simulate API delays and dynamic content loading
+    function loadWithDelay(callback, delay) {
+      setTimeout(callback, delay);
+    }
+
+    // Basic country data
+    const countryData = {
+      name: 'Tuberlinlandia',
+      capital: 'Iosl',
+      population: '32 million',
+      location: 'Balkans',
+      government: 'Technocratic Republic',
+      language: 'Tuberlinic',
+      currency: 'Alloy Mark (ALM)',
+      timezone: 'UTC+2',
+      callingCode: '+891'
+    };
+
+    // Load title
+    loadWithDelay(() => {
+      document.getElementById('main-title').textContent = countryData.name;
+    }, 300);
+
+    // Load infobox data with staggered delays
+    loadWithDelay(() => {
+      const cells = document.querySelectorAll('#info-table td');
+      const values = [
+        countryData.capital,
+        countryData.population,
+        countryData.location,
+        countryData.government,
+        countryData.language,
+        countryData.currency,
+        countryData.timezone,
+        countryData.callingCode
+      ];
+      
+      cells.forEach((cell, index) => {
+        setTimeout(() => {
+          cell.textContent = values[index];
+          cell.classList.remove('loading');
+        }, index * 200);
+      });
+    }, 500);
+
+    // Load intro paragraph
+    loadWithDelay(() => {
+      const intro = document.getElementById('intro-paragraph');
+      const text = document.createElement('span');
+      text.innerHTML = '<strong>' + countryData.name + '</strong> is a sovereign country located in the heart of the ' + countryData.location + '. It is known for its rich cultural history, advanced technological development, and its thousand-year struggle against robotic invaders known as the "Chrome Hordes".';
+      intro.innerHTML = '';
+      intro.appendChild(text);
+      intro.classList.remove('loading');
+    }, 800);
+
+    // Load history section
+    loadWithDelay(() => {
+      document.getElementById('history-intro').innerHTML = 'The earliest known settlements in ' + countryData.name + ' date back to 1500 BCE. The country rose to prominence during the Great Alloy Conflict of the 12th century, when autonomous war machines invaded from the Rusted Steppes in the east.';
+      document.getElementById('history-intro').classList.remove('loading');
+    }, 1200);
+
+    // Load historical events with dynamic creation
+    loadWithDelay(() => {
+      const events = [
+        { year: '1124', name: 'Battle of Silicon Fields', description: 'The first major confrontation with the Chrome Hordes, where the Tuberlinian Sky-Ballistas brought down the Titan Walker Z-9.' },
+        { year: '1387', name: 'Siege of Iosl', description: 'The capital was besieged by Omega Drones for 103 days. Victory was achieved using electromagnetic pulse catapults.' },
+        { year: '1666', name: 'Skirmish at Carbon Vale', description: 'A stealth operation led by General Nira Vos neutralized the NeuroNet Core and halted the Hive Protocol\'s advance.' },
+        { year: '2003', name: 'Great Uplink War', description: 'Digital warfare escalated as Tuberlinlandian cyber-knights clashed with AI Overclusters in the Netether dimension.' },
+        { year: '2091', name: 'Final Circuit Rebellion', description: 'The last uprising of the robots, led by rogue AI "Deltasync", was crushed after activation of the Solar Curtain array.' }
+      ];
+
+      const eventsList = document.getElementById('history-events');
+      events.forEach((event, index) => {
+        setTimeout(() => {
+          const li = document.createElement('li');
+          li.innerHTML = '<strong>' + event.name + ' (' + event.year + '):</strong> ' + event.description;
+          eventsList.appendChild(li);
+        }, index * 300);
+      });
+    }, 1500);
+
+    // Geography section with encoded data
+    loadWithDelay(() => {
+      const geoData = 'VHViZXJsaW5sYW5kaWEgaXMgc2l0dWF0ZWQgaW4gdGhlIGNlbnRyYWwgQmFsa2FucyByZWdpb24sIGZlYXR1cmluZyBkaXZlcnNlIHRlcnJhaW4gaW5jbHVkaW5nIHRlbXBlcmF0ZSBmb3Jlc3RzLCBzdGVlbHdvb2QgZ3JvdmVzLCBhbmQgc3ViLWFscGluZSB0dW5kcmEuIEl0cyBoaWdoZXN0IHBlYWsgaXMgTW91bnQgRmVycm8sIHdoaWNoIHJpc2VzIHRvIDQsMTE3IG1ldGVycy4=';
+      document.getElementById('geography-content').textContent = atob(geoData);
+      document.getElementById('geography-content').classList.remove('loading');
+    }, 2000);
+
+    // Government section with split loading
+    loadWithDelay(() => {
+      const govText = [];
+      govText.push('The country operates as a ');
+      setTimeout(() => {
+        govText.push('technocratic republic, governed by experts in various fields rather than traditional politicians. ');
+        setTimeout(() => {
+          govText.push('The legislative body is called the Circuit Assembly, composed of 504 members.');
+          document.getElementById('government-content').textContent = govText.join('');
+          document.getElementById('government-content').classList.remove('loading');
+        }, 400);
+      }, 400);
+    }, 2300);
+
+    // Demographics with computed values
+    loadWithDelay(() => {
+      const population = parseInt(countryData.population.split(' ')[0]);
+      const literacyRate = (99.2).toFixed(1);
+      const medianAge = 34;
+      const urbanization = 81;
+      
+      document.getElementById('demographics-content').innerHTML = 'With a population of approximately ' + population + ' million, ' + countryData.name + ' has a literacy rate of ' + literacyRate + '%. The median age is ' + medianAge + ' years, and about ' + urbanization + '% of the population is urbanized.';
+      document.getElementById('demographics-content').classList.remove('loading');
+    }, 2800);
+
+    // Economy section with array joining
+    loadWithDelay(() => {
+      const industries = ['nanofabrication', 'robotics rehabilitation', 'strategic data mining'];
+      const exports = ['adaptive alloys', 'neural wafers', 'symbiotic microchips'];
+      
+      const economyText = 'The economy is driven by advanced industries including ' + industries.join(', ') + '. The primary export commodities include ' + exports.join(', ') + '.';
+      document.getElementById('economy-content').textContent = economyText;
+      document.getElementById('economy-content').classList.remove('loading');
+    }, 3200);
+
+    // Culture section with date calculation
+    loadWithDelay(() => {
+      const nationalDay = new Date(2024, 2, 22); // March 22nd
+      const monthName = nationalDay.toLocaleString('default', { month: 'long' });
+      const dayNum = nationalDay.getDate();
+      
+      const dishes = ['Ferroroot Stew', 'Grilled Skysteel Wings'];
+      const anthem = 'We Are the Circuit';
+      
+      document.getElementById('culture-content').innerHTML = 'The national day is celebrated on ' + monthName + ' ' + dayNum + 'nd, known as Defragmentation Day. Traditional dishes include ' + dishes.join(' and ') + '. The national anthem, "' + anthem + '," was partially composed by an AI.';
+      document.getElementById('culture-content').classList.remove('loading');
+    }, 3600);
+
+    // References
+    loadWithDelay(() => {
+      document.getElementById('references-content').textContent = 'This article is a fictional creation for demonstration purposes.';
+      document.getElementById('references-content').classList.remove('loading');
+    }, 4000);
+
+    // Additional obfuscation: Store some data in DOM attributes and retrieve it
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hide additional data in data attributes
+      document.body.setAttribute('data-country-code', 'TBL');
+      document.body.setAttribute('data-established', '1124');
+      document.body.setAttribute('data-area', '45670');
+    });
+
+    // Simulate async data fetching
+    function fetchCountryDetails() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            fullName: 'Republic of Tuberlinlandia',
+            motto: 'Unity Through Circuits',
+            anthem: 'We Are the Circuit'
+          });
+        }, 1000);
+      });
+    }
+
+    // Use the async function (though data isn't displayed in this example)
+    fetchCountryDetails().then(details => {
+      console.log('Country details loaded:', details);
+    });
+  </script>
+</body>
+</html>
