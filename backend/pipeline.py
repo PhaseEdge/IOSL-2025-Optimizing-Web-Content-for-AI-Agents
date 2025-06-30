@@ -10,10 +10,12 @@ from helper_classes.model_controller import ModelController, ModelProvider
 PROMPT_PATH = "../src/prompts/summary_prompt.txt"
 OUTPUT_PATH = "../src/llm_outputs"
 WEBSITE_LIST = [
-    "https://google.com",
-    "https://wikipedia.org",
-    "https://openai.com"
+    "http://localhost:3000/Tuberlinlandia",
+    "http://localhost:3000/Tuberlinlandia-with-microdata",
+    "http://localhost:3000/Tuberlinlandia-with-microdata-and-json-ld",
+    "http://localhost:3000/Tuberlinlandia-with-json-ld"
 ]
+
 
 # Logging
 def log_experiment(website: str, query: str, model: str, output: str, filename: str = "backend/experiments.jsonl"):
@@ -70,15 +72,16 @@ class WebContentCrawler:
 
 # Question Loader
 def load_mock_questions(website: str, base_path="backend/questions"):
-    domain_key = website.replace("https://", "").replace(".", "_")
+    domain_key = website.replace("http://localhost:3000/", "").replace(".", "_")
     question_file = Path(base_path) / f"{domain_key}.txt"
     with open(question_file, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 # Main execution
 async def run_full_evaluation():
-    prompt_manager = PromptManager(PROMPT_PATH)
-    prompt_template = prompt_manager.load_prompt()
+    # prompt_manager = PromptManager(PROMPT_PATH)
+    # prompt_template = prompt_manager.load_prompt()
+    prompt_template = ""
     crawler = WebContentCrawler()
     all_results = []
 
