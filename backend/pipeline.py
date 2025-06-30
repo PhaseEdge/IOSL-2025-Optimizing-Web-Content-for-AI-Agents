@@ -10,9 +10,12 @@ from helper_classes.model_controller import ModelController, ModelProvider
 PROMPT_PATH = "../src/prompts/summary_prompt.txt"
 OUTPUT_PATH = "../src/llm_outputs"
 WEBSITE_LIST = [
-    "https://google.com",
-    "https://wikipedia.org",
-    "https://openai.com"
+    "http://localhost:3000/wiki",
+    "http://localhost:3000/media",
+    "http://localhost:3000/jsheavy",
+    "http://localhost:3000/interactiveEasy",
+    "http://localhost:3000/interactiveHard",
+    "http://localhost:3000/semantic"
 ]
 
 # Logging
@@ -77,8 +80,9 @@ def load_mock_questions(website: str, base_path="backend/questions"):
 
 # Main execution
 async def run_full_evaluation():
-    prompt_manager = PromptManager(PROMPT_PATH)
-    prompt_template = prompt_manager.load_prompt()
+#    prompt_manager = PromptManager(PROMPT_PATH)
+#    prompt_template = prompt_manager.load_prompt()
+    prompt_template = ""
     crawler = WebContentCrawler()
     all_results = []
 
@@ -118,7 +122,7 @@ async def run_full_evaluation():
 
     print("\n--- Evaluation complete ---")
     for w, m, q, s in all_results:
-        print(f"{w} | {m} | {q[:30]}... | {'✓' if s else '✗'}")
+        print(f"{w} | {m} | {q[:30]}... | {'yes' if s else 'no'}")
 
 if __name__ == "__main__":
     asyncio.run(run_full_evaluation())
