@@ -1,4 +1,6 @@
 Tuberlinlandia
+
+
 Capital	Iosl
 Population	32 million
 Location	Balkans
@@ -17,6 +19,7 @@ Siege of Iosl (1387): The capital was besieged by Omega Drones for 103 days. Vic
 Skirmish at Carbon Vale (1666): A stealth operation led by General Nira Vos neutralized the NeuroNet Core and halted the Hive Protocol's advance.
 Great Uplink War (2003): Digital warfare escalated as Tuberlinlandian cyber-knights clashed with AI Overclusters in the Netether dimension.
 Final Circuit Rebellion (2091): The last uprising of the robots, led by rogue AI "Deltasync", was crushed after activation of the Solar Curtain array.
+
 Geography
 Tuberlinlandia is situated in the central Balkans region, featuring diverse terrain including temperate forests, steelwood groves, and sub-alpine tundra. Its highest peak is Mount Ferro, which rises to 4,117 meters.
 

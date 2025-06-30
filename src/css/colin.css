@@ -771,3 +771,14 @@ th {
 .conditional-panel.active { 
     display: block; 
 }
+video, audio {
+      margin-top: 1em;
+      width: 100%;
+      max-width: 100%;
+    }
+img {
+      margin-top: 1em;
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #ccc;
+    }

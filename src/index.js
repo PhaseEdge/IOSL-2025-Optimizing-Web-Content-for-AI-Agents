@@ -145,7 +145,19 @@ const server = http.createServer((req, res) => {
     })
   } else if (req.url === '/semantic') {
     const filePath = path.join(__dirname, 'pages/experimental-pages' , 'semanticConfusion.html')
-    console.log('DEBUG LOG Serving /experimental1 route...')
+    
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/media') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'mediaEmbeddings.html')
+    
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
