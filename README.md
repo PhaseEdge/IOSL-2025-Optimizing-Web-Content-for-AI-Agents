@@ -1,6 +1,6 @@
-# Project: Better Readability for LLMs
+# Project: Optimizing Web Content for AI Agents
 
-This project is an experimental framework to investigate and improve how Large Language Models (LLMs) comprehend web content. We use a backend pipeline to systematically evaluate the performance of different AI models (e.g., from OpenAI, Google, and Ollama) on question-answering tasks using transformed web content. The goal is to identify which content structures and formats yield the best machine readability and understanding.
+This project is an experimental framework for optimizing web content for AI agents. We investigate how different content structures and formats affect the ability of AI agents, particularly Large Language Models (LLMs), to comprehend and process information. The project uses a backend pipeline to systematically evaluate model performance on question-answering tasks using transformed web content, with the goal of discovering best practices for creating agent-friendly websites.
 
 ## Project Structure
 
