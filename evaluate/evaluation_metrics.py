@@ -1,11 +1,15 @@
-import warnings
 from uptrain import EvalLLM, Evals, Settings, GuidelineAdherence
 import csv
 import json
 import re
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 # Read model responses from the file
-log_file = 'experiments-2.jsonl'
+log_file = 'experiments-local.jsonl'
 logs = []
 data = []
 with open(log_file, 'r', encoding='utf-8') as lf:
@@ -21,8 +25,10 @@ with open(log_file, 'r', encoding='utf-8') as lf:
         })
 
 # Initialize UpTrain
-settings = Settings(model='ollama/mistral:7b')
+#settings = Settings(model='ollama/mistral:7b')
+settings = Settings(model = 'gpt-4.1-mini', openai_api_key= os.getenv("OPENAI_API_KEY"))
 eval_llm = EvalLLM(settings)
+
 
 # Give guidelines for the custom metric
 guideline = """ 
