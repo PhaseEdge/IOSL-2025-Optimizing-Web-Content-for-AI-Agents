@@ -294,7 +294,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland') {
-    const filePath = path.join(__dirname, 'pages', 'inland.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandMainPage', 'inland.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -305,7 +305,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-1') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle1.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle1', 'inlandArticle1.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -316,7 +316,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-2') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle2.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle2', 'inlandArticle2.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -327,7 +327,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-3') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle3.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle3', 'inlandArticle3.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -338,7 +338,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-4') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle4.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle4', 'inlandArticle4.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -349,7 +349,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-5') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle5.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle5', 'inlandArticle5.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -393,7 +393,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-1-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle1JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle1', 'inlandArticle1JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -404,7 +404,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-2-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle2JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle2', 'inlandArticle2JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -415,7 +415,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-3-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle3JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle3', 'inlandArticle3JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -426,7 +426,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-4-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle4JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle4', 'inlandArticle4JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -437,7 +437,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-5-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle5JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle5', 'inlandArticle5JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
