@@ -116,3 +116,5 @@ Throughout the codebase, we've added comprehensive comments to help developers u
 - Recommendations for when to use each format
 
 These comments serve as inline documentation to help developers understand the importance of structured data for AI-powered applications and search engines.
+
+**P.S : Inland articles takes too much time to add comments for better readability. Only inlandArticle1 directory inside inland-new-pages directory has comments. Because inlandArticle(2-3-4-5) has the same structure and same appliances of JSONLD and microdata tags. tablePage1WithPagination also has comments and the same issue goes for tablePage1 as well**
