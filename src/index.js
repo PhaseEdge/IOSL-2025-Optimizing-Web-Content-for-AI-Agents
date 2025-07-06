@@ -52,13 +52,6 @@ const server = http.createServer((req, res) => {
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
 
-  if (req.url === '/api/people/table-page-1') {
-    const people = require('./data/tablePage1Data.js')
-    res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.end(JSON.stringify(people))
-    return
-  }
-
   if (req.url === '/inland-article-1-llm') {
     const txtContent = fs.readFileSync(
       path.join(__dirname, 'pages/inland-new-pages/inlandArticle1/inlandArticle1.llm.txt'),
@@ -102,6 +95,13 @@ const server = http.createServer((req, res) => {
     )
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     res.end(txtContent)
+    return
+  }
+
+  if (req.url === '/api/people/table-page-1') {
+    const people = require('./data/tablePage1Data.js')
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify(people))
     return
   }
 
