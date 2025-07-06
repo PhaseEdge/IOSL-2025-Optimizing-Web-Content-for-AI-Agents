@@ -1,32 +1,63 @@
-# IOSL-2025-2026-Better-Readability-for-LLMs
+# Project: Better Readability for LLMs
 
-\*\*\* Requirements:
+This project is an experimental framework to investigate and improve how Large Language Models (LLMs) comprehend web content. We use a backend pipeline to systematically evaluate the performance of different AI models (e.g., from OpenAI, Google, and Ollama) on question-answering tasks using transformed web content. The goal is to identify which content structures and formats yield the best machine readability and understanding.
 
-1. Node.js
+## Project Structure
 
-\*\*\* To start the project
+The repository is organized into the following key directories:
 
-1. npm install
-2. npm run dev (browser sync -> it will reload the content whenever you make changes and save them)
-OR on windows 
-2. npm run dev:win
+- **/src**: Contains the source code for the frontend application.
+- **/backend**: Includes the Python-based backend evaluation pipeline, helper classes, and configuration files.
+- **/public**: Holds public assets for the frontend.
+- **/evaluate**: Contains evaluation scripts and results.
 
-Branching structure
+## Getting Started
 
-main # Main production branch
-├── release # Sprint-based releases
-│ ├── SPRINT-1 # Current active sprint
-│ │ ├── feature/IOSL-1/subs-tier-packages
-│ │ ├── improvement/IOSL-2/api-performance
-│ │ ├── bugfix/IOSL-3/fix-login-issue
-│ │ ├── hotfix/IOSL-4/payment-error
-│ │ └── chore/IOSL-5/refactor-legacy-code
-│ ├── SPRINT-2
-│ │ ├── feature/IOSL-6/user-dashboard
-│ │ └── improvement/IOSL-7/cache-optimization
-│ └── SPRINT-3
-│ └── feature/IOSL-8/new-payment-integration
-│
-├── development # Pre-production testing
+Below are the instructions to set up and run both the frontend and backend components of the project.
 
-After each sprint merge current release/SPRINT to main.Then pull request master -> dev. create new release/SPRINT-...
+### Frontend Setup
+
+The frontend is a Node.js application. Follow these steps to run it locally.
+
+**Prerequisites:**
+- Node.js
+
+**Installation and Execution:**
+
+1.  Install the necessary packages:
+    ```bash
+    npm install
+    ```
+
+2.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+    On Windows, you may need to use:
+    ```bash
+    npm run dev:win
+    ```
+    The application will be available in your browser, and the page will automatically reload upon saving changes.
+
+### Backend Setup
+
+The backend is a Python-based pipeline for crawling websites and evaluating LLM-generated content. It supports models from Gemini, OpenAI, and Ollama.
+
+For detailed instructions on how to configure the environment, set up API keys, and run the evaluation, please refer to the dedicated backend documentation:
+
+**[Backend README](./backend/README.md)**
+
+## Branching Strategy
+
+The project follows a Gitflow-like branching model to manage development and releases.
+
+- **main**: The primary production-ready branch.
+- **development**: Pre-production branch for testing integrated features.
+- **release/SPRINT-***: Branches for managing sprint-based releases. Features, bugfixes, and improvements are merged here before being integrated into `development` and `main`.
+
+**Workflow:**
+1.  Develop features on branches off `release/SPRINT-*` (e.g., `feature/IOSL-1/...`).
+2.  Merge completed features into the current sprint release branch.
+3.  After a sprint, merge the release branch into `main`.
+4.  Update the `development` branch from `main` to ensure it has the latest production code.
+5.  Create a new `release/SPRINT-*` branch for the next sprint's work.
