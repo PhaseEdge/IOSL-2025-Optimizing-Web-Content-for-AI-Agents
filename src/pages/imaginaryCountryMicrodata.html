@@ -6,9 +6,42 @@
     <title>Tuberlinlandia - Wikipedia</title>
   </head>
   <body>
+    <!-- 
+      Microdata Implementation for AI Agent Readability
+      =================================================
+      
+      This HTML document uses Schema.org microdata to enhance machine readability
+      for AI agents and search engines. Microdata provides structured data that
+      helps AI systems understand:
+      
+      1. Entity Types: What kind of content this is (Country, City, Event, etc.)
+      2. Relationships: How different entities relate to each other
+      3. Properties: Specific attributes of each entity
+      4. Context: The semantic meaning of the content
+      
+      Benefits for AI Agents:
+      - Clear entity identification without natural language processing
+      - Structured data extraction for knowledge graphs
+      - Improved accuracy in content understanding
+      - Reduced ambiguity in data interpretation
+      - Enhanced ability to answer specific queries about the content
+    -->
+    
+    <!-- 
+      Main container uses itemscope to declare a new microdata item
+      itemtype="https://schema.org/Country" tells AI agents this is about a country
+      All nested itemprop attributes belong to this Country entity
+    -->
     <div class="container" itemscope itemtype="https://schema.org/Country">
+      <!-- itemprop="name" explicitly marks this as the country's name -->
       <h1><span itemprop="name">Tuberlinlandia</span></h1>
 
+      <!-- 
+        Infobox Table with Structured Data
+        ==================================
+        This table demonstrates how microdata can be embedded within HTML tables.
+        AI agents can extract key-value pairs directly from the markup.
+      -->
       <table class="infobox">
         <tr>
           <th colspan="2">Tuberlinlandia</th>
@@ -16,6 +49,10 @@
         <tr>
           <td><strong>Capital</strong></td>
           <td>
+            <!-- 
+              Nested microdata: capital is both a property of Country and its own City entity
+              This allows AI to understand hierarchical relationships
+            -->
             <span itemprop="capital" itemscope itemtype="https://schema.org/City">
               <span itemprop="name">Iosl</span>
             </span>
@@ -23,11 +60,13 @@
         </tr>
         <tr>
           <td><strong>Population</strong></td>
+          <!-- Simple property: AI can directly extract "32000000" as population value -->
           <td><span itemprop="population">32000000</span></td>
         </tr>
         <tr>
           <td><strong>Location</strong></td>
           <td>
+            <!-- Geographic information marked as Place entity -->
             <span itemprop="geo" itemscope itemtype="https://schema.org/Place">
               <span itemprop="name">Balkans</span>
             </span>
@@ -35,19 +74,34 @@
         </tr>
         <tr>
           <td><strong>Government</strong></td>
+          <!-- Custom property for government type - AI understands this is a descriptor -->
           <td><span itemprop="governmentType">Technocratic Republic</span></td>
         </tr>
       </table>
 
+      <!-- 
+        History Section with Description Property
+        =========================================
+        The description property provides AI agents with a comprehensive summary
+        of the entity. This is particularly useful for:
+        - Quick information retrieval
+        - Content summarization
+        - Knowledge graph population
+      -->
       <div class="section">
         <h2>History</h2>
         <p>
+          <!-- 
+            itemprop="description" marks this as the main description of the Country
+            AI agents prioritize this content for entity summaries
+          -->
           <span itemprop="description">
             Tuberlinlandia is a sovereign country located in the heart of the Balkans. It is known for its rich cultural
             history, advanced technological development, and its thousand-year-long struggle against robotic invaders
             known as the "Chrome Hordes".
           </span>
         </p>
+        <!-- Additional context without microdata - AI can still process but with lower confidence -->
         <p>
           The earliest known settlements date back to 1500 BCE, but Tuberlinlandia rose to prominence during the Great
           Alloy Conflict of the 12th century, when autonomous war-machines began to invade from the Rusted Steppes in
@@ -55,16 +109,42 @@
         </p>
       </div>
 
+      <!-- 
+        Events/Battles as CreativeWork Entities
+        ========================================
+        This section demonstrates how lists of related items can be marked up
+        with microdata. Each battle is its own entity with properties.
+        
+        Why CreativeWork instead of Event?
+        - CreativeWork is used here for historical accounts/records of battles
+        - Each item has name, date, and description properties
+        - AI agents can extract a timeline of events with structured data
+        
+        Benefits for AI:
+        - Chronological understanding through datePublished
+        - Event names clearly identified
+        - Descriptions provide context without ambiguity
+        - Can build knowledge graphs of historical events
+      -->
       <div class="section">
         <h2>Major Battles Against Robots</h2>
         <ul id="battle-list">
+          <!-- Each list item is a separate microdata entity -->
           <li itemscope itemtype="https://schema.org/CreativeWork">
-            <strong itemprop="name">Battle of Silicon Fields</strong> (<span itemprop="datePublished">1124</span>):
+            <!-- Battle name clearly marked for extraction -->
+            <strong itemprop="name">Battle of Silicon Fields</strong> 
+            <!-- Date in parentheses but explicitly marked as datePublished -->
+            (<span itemprop="datePublished">1124</span>):
+            <!-- Description provides context about the battle -->
             <span itemprop="description">
               First major confrontation with the Chrome Hordes, where the Tuberlinian Sky-Ballistas brought down the
               Titan Walker Z-9.
             </span>
           </li>
+          <!-- 
+            Pattern continues for each battle entry
+            AI can build a complete timeline from 1124 to 2091
+          -->
           <li itemscope itemtype="https://schema.org/CreativeWork">
             <strong itemprop="name">Siege of Iosl</strong> (<span itemprop="datePublished">1387</span>):
             <span itemprop="description">
@@ -96,5 +176,24 @@
         </ul>
       </div>
     </div>
+    
+    <!-- 
+      Summary: Microdata Best Practices for AI Readability
+      =====================================================
+      
+      1. Use appropriate Schema.org types for your content
+      2. Mark up key properties with itemprop attributes
+      3. Create nested structures for related entities
+      4. Provide dates in machine-readable format
+      5. Include descriptions for complex entities
+      6. Use consistent patterns across similar content
+      
+      This structured approach enables AI agents to:
+      - Extract factual information with high confidence
+      - Build knowledge graphs from your content
+      - Answer specific queries about entities
+      - Understand relationships between different data points
+      - Process content without relying solely on NLP
+    -->
   </body>
 </html>

@@ -5,23 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tuberlinlandia - Wikipedia</title>
 
+    <!-- 
+      JSON-LD Schema.org Structured Data
+      ===================================
+      
+      JSON-LD provides a complete knowledge graph in a single block.
+      AI agents can parse this JSON object to understand:
+      - The main entity (Country)
+      - All its properties and relationships
+      - Nested entities (City, Place)
+      - Related events (battles via subjectOf)
+      
+      Advantages for AI:
+      - Single parsing operation for all data
+      - Clear hierarchical structure
+      - Easy to validate against Schema.org
+      - Can include properties not visible in HTML
+      - Supports complex entity relationships
+    -->
     <script type="application/ld+json">
       {
+        /* @context defines the vocabulary - Schema.org is the standard */
         "@context": "https://schema.org",
+
+        /* @type specifies what kind of entity this is */
         "@type": "Country",
+
+        /* Basic properties with direct values */
         "name": "Tuberlinlandia",
         "alternateName": "Republic of Tuberlinlandia",
         "description": "Tuberlinlandia is a fictional sovereign country located in the Balkans, known for its rich history and its millennium-long war against robotic invaders.",
+
+        /* Nested entity for geographic location */
         "geo": {
           "@type": "Place",
           "name": "Balkans"
         },
+
+        /* Numeric property - AI can use for calculations/comparisons */
         "population": "32000000",
+
+        /* Another nested entity - the capital city */
         "capital": {
           "@type": "City",
           "name": "Iosl"
         },
+
+        /* Custom property for government type */
         "governmentType": "Technocratic Republic",
+
+        /* Reference to the main webpage about this entity */
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": "https://example.com/tuberlinlandia"

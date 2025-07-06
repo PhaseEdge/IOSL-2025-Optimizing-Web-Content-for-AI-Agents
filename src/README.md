@@ -9,6 +9,7 @@ This frontend is designed to showcase structured HTML content enhanced with sema
 - **LLM-Ready Content**: Each article and table page includes an optional llm.txt to support alternative model-ready content.
 - **Scalable Structure**: Pages are organized into well-separated folders for easy navigation and backend crawling.
 - **Clean CSS Integration**: A shared stylesheet ensures consistent styling across all HTML files.
+- **Developer Comments for AI Readability**: Enhanced with inline comments explaining how structured data improves AI agent understanding.
 
 ## Workflow
 
@@ -86,3 +87,32 @@ graph TD
     npm run dev:win
     ```
     The application will be available in your browser, and the page will automatically reload upon saving changes.
+
+## Developer Comments for Enhanced AI Readability
+
+Throughout the codebase, we've added comprehensive comments to help developers understand how structured data (JSON-LD and Microdata) improves AI agent readability:
+
+### Comment Types Added:
+
+1. **JSON-LD Comments**: Explain vocabulary definitions, entity relationships, and schema benefits
+
+   - Files enhanced: `imaginaryCountryJSONLD.html`, `imaginaryCountryJSONLDAndMicroData.html`, `inlandArticle1JSONLD.html`, `inlandArticle1JSONLDandMicrodata.html`
+   - Key benefits explained: Machine-readable format, knowledge graph construction, entity linking
+
+2. **Microdata Comments**: Describe inline semantic markup and property annotations
+
+   - Files enhanced: `imaginaryCountryMicrodata.html`, `imaginaryCountryJSONLDAndMicroData.html`, `inlandArticle1JSONLDandMicrodata.html`
+   - Key benefits explained: Direct HTML integration, clear entity boundaries, property relationships
+
+3. **Pagination Metadata Comments**: Explain how AI agents understand paginated content
+   - Files enhanced: All pagination variant files (`tableWithPagination1-*.html`)
+   - Key benefits explained: Page context awareness, navigation understanding, dataset size comprehension
+
+### Comment Guidelines:
+
+- Short, focused explanations for complex structures
+- Clear indication of AI parsing benefits
+- Examples of how agents extract and use the data
+- Recommendations for when to use each format
+
+These comments serve as inline documentation to help developers understand the importance of structured data for AI-powered applications and search engines.

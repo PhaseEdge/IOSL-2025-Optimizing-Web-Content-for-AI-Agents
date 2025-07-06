@@ -5,24 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tuberlinlandia - Wikipedia</title>
 
-    <!-- JSON-LD Schema.org Structured Data -->
+    <!-- 
+      JSON-LD and Microdata: Dual Approach for Maximum AI Compatibility
+      =================================================================
+      
+      This HTML document demonstrates using BOTH JSON-LD and Microdata to provide
+      structured data for AI agents and search engines. This dual approach ensures
+      maximum compatibility across different systems.
+      
+      JSON-LD vs Microdata - Key Differences:
+      
+      1. JSON-LD (JavaScript Object Notation for Linked Data):
+         - Separate from HTML content (in script tag)
+         - Easier to validate and generate programmatically
+         - Preferred by Google and many modern AI systems
+         - Can represent complex relationships more clearly
+         - No impact on HTML structure or CSS styling
+      
+      2. Microdata:
+         - Embedded directly in HTML elements
+         - Visible connection between data and presentation
+         - Better for inline semantic markup
+         - Works even if JavaScript is disabled
+         - More intuitive for content editors
+      
+      Benefits of Using Both:
+      - Maximum compatibility with different AI agents
+      - Redundancy ensures data extraction even if one method fails
+      - JSON-LD for complex relationships, Microdata for simple properties
+      - Future-proofing against changing AI preferences
+    -->
+
+    <!-- 
+      JSON-LD Schema.org Structured Data
+      ===================================
+      
+      JSON-LD provides a complete knowledge graph in a single block.
+      AI agents can parse this JSON object to understand:
+      - The main entity (Country)
+      - All its properties and relationships
+      - Nested entities (City, Place)
+      - Related events (battles via subjectOf)
+      
+      Advantages for AI:
+      - Single parsing operation for all data
+      - Clear hierarchical structure
+      - Easy to validate against Schema.org
+      - Can include properties not visible in HTML
+      - Supports complex entity relationships
+    -->
     <script type="application/ld+json">
       {
+        /* @context defines the vocabulary - Schema.org is the standard */
         "@context": "https://schema.org",
+        
+        /* @type specifies what kind of entity this is */
         "@type": "Country",
+        
+        /* Basic properties with direct values */
         "name": "Tuberlinlandia",
         "alternateName": "Republic of Tuberlinlandia",
         "description": "Tuberlinlandia is a sovereign country in the Balkans, known for its ancient history and wars against robotic invaders.",
+        
+        /* Nested entity for geographic location */
         "geo": {
           "@type": "Place",
           "name": "Balkans"
         },
+        
+        /* Numeric property - AI can use for calculations/comparisons */
         "population": 32000000,
+        
+        /* Another nested entity - the capital city */
         "capital": {
           "@type": "City",
           "name": "Iosl"
         },
+        
+        /* Custom property for government type */
         "governmentType": "Technocratic Republic",
+        
+        /* Array of related entities - battles as historical events */
         "subjectOf": [
           {
             "@type": "CreativeWork",
@@ -60,9 +123,34 @@
   </head>
 
   <body>
+    <!-- 
+      Microdata Implementation (Complementing JSON-LD)
+      ================================================
+      
+      While JSON-LD provides the complete data model above, Microdata
+      offers inline semantic markup that:
+      
+      1. Directly connects data to its visual representation
+      2. Works for screen readers and accessibility tools
+      3. Provides fallback for systems that don't process JSON-LD
+      4. Makes the semantic structure visible to developers
+      
+      The following sections use the same Schema.org vocabulary
+      as the JSON-LD above, ensuring consistency.
+    -->
+    
+    <!-- Container establishes the Country entity scope for all nested properties -->
     <div class="container" itemscope itemtype="https://schema.org/Country">
+      <!-- The country name is marked inline where it appears -->
       <h1><span itemprop="name">Tuberlinlandia</span></h1>
 
+      <!-- 
+        Microdata in Tables
+        ===================
+        Tables often contain structured data. With microdata, each cell
+        can be semantically marked. Note how this duplicates some of
+        the JSON-LD data - this redundancy improves reliability.
+      -->
       <table class="infobox">
         <tr>
           <th colspan="2">Tuberlinlandia</th>
@@ -70,6 +158,7 @@
         <tr>
           <td><strong>Capital</strong></td>
           <td>
+            <!-- Nested microdata: same structure as JSON-LD capital property -->
             <span itemprop="capital" itemscope itemtype="https://schema.org/City">
               <span itemprop="name">Iosl</span>
             </span>
@@ -109,9 +198,20 @@
         </p>
       </div>
 
+      <!-- 
+        Synchronizing JSON-LD and Microdata
+        ====================================
+        The battles listed here mirror the "subjectOf" array in JSON-LD.
+        This demonstrates how both formats can represent the same data:
+        - JSON-LD: Clean array structure in the header
+        - Microdata: Inline markup where content appears
+        
+        AI agents can cross-reference both sources for validation.
+      -->
       <div class="section">
         <h2>Major Battles Against Robots</h2>
         <ul id="battle-list">
+          <!-- Each battle matches an entry in the JSON-LD subjectOf array -->
           <li itemscope itemtype="https://schema.org/CreativeWork">
             <strong itemprop="name">Battle of Silicon Fields</strong> (<span itemprop="datePublished">1124</span>):
             <span itemprop="description">
@@ -150,5 +250,56 @@
         </ul>
       </div>
     </div>
+    
+    <!-- 
+      Best Practices: JSON-LD + Microdata for AI Agents
+      ==================================================
+      
+      1. Consistency is Key:
+         - Use the same Schema.org types in both formats
+         - Ensure property values match exactly
+         - Maintain the same entity relationships
+      
+      2. When to Use Each Format:
+         
+         JSON-LD is Better For:
+         - Complex nested structures
+         - Arrays of related items
+         - Properties not visible in the UI
+         - Programmatic generation of structured data
+         - Single source of truth for all metadata
+         
+         Microdata is Better For:
+         - Inline semantic markup
+         - Direct correlation with visible content
+         - Progressive enhancement
+         - Accessibility tools and screen readers
+         - Content management systems
+      
+      3. AI Agent Benefits of Dual Approach:
+         - Redundancy prevents data loss
+         - Cross-validation improves accuracy
+         - Different parsing methods supported
+         - Future-proof against format preferences
+         - Enhanced confidence in extracted data
+      
+      4. Implementation Tips:
+         - Validate JSON-LD with Google's Structured Data Testing Tool
+         - Test microdata with Schema.org validators
+         - Keep both formats synchronized when updating
+         - Use automated tools to generate consistent markup
+         - Monitor AI agent behavior with both formats
+      
+      5. Common Patterns:
+         - Main entity (Country) in both formats
+         - Nested entities (City, Place) properly scoped
+         - Arrays in JSON-LD, lists in microdata
+         - Dates in consistent format
+         - Descriptions for context
+      
+      This dual approach maximizes the likelihood that AI agents
+      will correctly understand and extract your content's meaning,
+      regardless of their preferred parsing method.
+    -->
   </body>
 </html>
