@@ -1,4 +1,4 @@
-# IOSL-2025-2026-Better-Readability-for-LLMs
+# IOSL-2025-Optimizing-Web-Content-for-AI-Agents
 
 \*\*\* Requirements:
 
