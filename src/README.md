@@ -21,7 +21,7 @@ graph TD
     B --> C[Fictional Country Pages];
     B --> D[Inland Articles];
     B --> E[Table Pages];
-    C --> C1[pageFurkan.html];
+    C --> C1[pageFurkan.html+pageColin.html];
     C1 --> C2[imaginaryCountry Variants];
     D --> D1[inland.html];
     D1 --> D2[inlandArticle{1..5}/];
