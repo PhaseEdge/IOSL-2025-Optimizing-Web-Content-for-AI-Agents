@@ -17,18 +17,21 @@ The diagram below illustrates the complete workflow of the evaluation pipeline.
 
 ```mermaid
 graph TD
-    A([Start]) --> B{Load Page Types};
-    B --> C[Fictional Country Pages];
-    B --> D[Inland Articles];
-    B --> E[Table Pages];
-    C --> C1[pageFurkan.html+pageColin.html];
-    C1 --> C2[imaginaryCountry Variants];
-    D --> D1[inland.html];
-    D1 --> D2[inlandArticle{1..5}/];
-    D2 --> D3[llm.txt files];
-    E --> E1[pages-with-table/];
-    E1 --> E2[tablePage1 + Variants];
-    E1 --> E3[tablePage1WithPagination + Variants];
+    A([Start]) --> B{Load Page Types}
+    B --> C[Fictional Country Pages]
+    B --> D[Inland Articles]
+    B --> E[Table Pages]
+    
+    C --> C1[pageFurkan & pageColin]
+    C1 --> C2[Imaginary Country Variants]
+    
+    D --> D1[inland.html]
+    D1 --> D2[Inland Articles 1 to 5]
+    D2 --> D3[llm.txt files]
+    
+    E --> E1[Table Pages Directory]
+    E1 --> E2[tablePage1 + Variants]
+    E1 --> E3[tablePage1WithPagination + Variants]
 ```
 
 ## Pages Created With Their Creators
