@@ -1,0 +1,279 @@
+<!-- This is a page with interactive/dynamic content that might Challenge information retrieval by AIs
+Interactive Components Implemented:
+
+1 Tab Interface - Main content is split across 3 tabs:
+{
+-Overview (basic facts)
+-Detailed Information (history, government)
+-Society & Culture (demographics, economy, culture)
+}
+2 Accordion Sections - Historical events are in collapsible accordion items, and cultural information is organized in expandable sections
+3 Modal Dialogs - Additional information about "Chrome Hordes" and the national anthem appears in popup modals when clicked
+4 Dropdown Menus - Geographic details and economic sectors are hidden in dropdown menus that expand on click
+5Collapsible Sections - Government and demographic information is in collapsible content blocks
+
+Real world websites that use elements like these might be:
+
+E-commerce sites use tabs for product details, reviews, specifications
+Corporate websites use accordions for FAQs and service descriptions
+News sites use modals for photo galleries and additional context
+Educational sites use collapsible sections for course content
+Government sites use dropdowns for detailed policy information
+
+This creates a much more challenging extraction scenario where an AI system would need to:
+
+Execute JavaScript to reveal hidden content
+Simulate user interactions (clicks, hovers)
+Navigate through multiple interface states
+Understand content relationships across different UI components
+Handle dynamic content visibility changes
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tuberlinlandia - Wikipedia</title>
+  <link rel="stylesheet" href="/css/colin.css" />
+</head>
+<body>
+  <h1>Tuberlinlandia</h1>
+  
+  <div class="infobox">
+    <table>
+      <tr><th>Capital</th><td>Iosl</td></tr>
+      <tr><th>Population</th><td>32 million</td></tr>
+      <tr><th>Location</th><td>Balkans</td></tr>
+      <tr><th>Government</th><td>Technocratic Republic</td></tr>
+      <tr><th>Official Language</th><td>Tuberlinic</td></tr>
+      <tr><th>Currency</th><td>Alloy Mark (ALM)</td></tr>
+      <tr><th>Time zone</th><td>UTC+2</td></tr>
+      <tr><th>Calling code</th><td>+891</td></tr>
+    </table>
+  </div>
+
+  <p><strong>Tuberlinlandia</strong> is a sovereign country located in the heart of the Balkans. It is known for its rich cultural history, advanced technological development, and its thousand-year struggle against robotic invaders known as the <span class="modal-link" onclick="openModal('chromeHordesModal')">"Chrome Hordes"</span>.</p>
+
+  <!-- Chrome Hordes Modal -->
+  <div id="chromeHordesModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('chromeHordesModal')">&times;</span>
+      <h3>Chrome Hordes</h3>
+      <p>The Chrome Hordes are autonomous war machines that have plagued Tuberlinlandia for over a millennium. These robotic invaders originated from the Rusted Steppes and are characterized by their metallic chrome finish and advanced AI systems.</p>
+    </div>
+  </div>
+
+  <!-- Main Content Tabs -->
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button class="tab-button active" onclick="showTab('overview')">Overview</button>
+      <button class="tab-button" onclick="showTab('detailed-info')">Detailed Information</button>
+      <button class="tab-button" onclick="showTab('society')">Society & Culture</button>
+    </div>
+    
+    <div id="overview" class="tab-content active">
+      <h2>Quick Facts</h2>
+      <p>Essential information about Tuberlinlandia's geography, government, and basic demographics.</p>
+      
+      <div class="dropdown">
+        <button class="dropdown-trigger">Geographic Details ▼</button>
+        <div class="dropdown-content">
+          <div><strong>Terrain:</strong> Temperate forests, steelwood groves, sub-alpine tundra</div>
+          <div><strong>Highest Peak:</strong> Mount Ferro (4,117 meters)</div>
+          <div><strong>Climate:</strong> Continental with robotic weather interference</div>
+          <div><strong>Natural Resources:</strong> Adaptive alloys, neural minerals</div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="detailed-info" class="tab-content">
+      <h2>History</h2>
+      <p>The earliest known settlements in Tuberlinlandia date back to 1500 BCE. The country rose to prominence during the Great Alloy Conflict of the 12th century, when autonomous war machines invaded from the Rusted Steppes in the east.</p>
+      
+      <!-- Historical Events Accordion -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Battle of Silicon Fields (1124)
+          </div>
+          <div class="accordion-content">
+            <p>The first major confrontation with the Chrome Hordes, where the Tuberlinian Sky-Ballistas brought down the Titan Walker Z-9. This victory established Tuberlinlandia's reputation for innovative anti-robotic warfare.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Siege of Iosl (1387)
+          </div>
+          <div class="accordion-content">
+            <p>The capital was besieged by Omega Drones for 103 days. Victory was achieved using electromagnetic pulse catapults. The siege led to major improvements in the city's defensive systems.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Skirmish at Carbon Vale (1666)
+          </div>
+          <div class="accordion-content">
+            <p>A stealth operation led by General Nira Vos neutralized the NeuroNet Core and halted the Hive Protocol's advance. This marked the first successful infiltration of robotic command structures.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Great Uplink War (2003)
+          </div>
+          <div class="accordion-content">
+            <p>Digital warfare escalated as Tuberlinlandian cyber-knights clashed with AI Overclusters in the Netether dimension. This conflict introduced virtual battlefields to traditional warfare.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Final Circuit Rebellion (2091)
+          </div>
+          <div class="accordion-content">
+            <p>The last uprising of the robots, led by rogue AI "Deltasync", was crushed after activation of the Solar Curtain array. This event marked the end of large-scale robotic invasions.</p>
+          </div>
+        </div>
+      </div>
+      
+      <h2>Government and Politics</h2>
+      <button class="collapsible" onclick="toggleCollapsible(this)">Political Structure</button>
+      <div class="content">
+        <p>The country operates as a technocratic republic, governed by experts in various fields rather than traditional politicians. The legislative body is called the Circuit Assembly, composed of 504 members.</p>
+      </div>
+      
+      <button class="collapsible" onclick="toggleCollapsible(this)">Electoral System</button>
+      <div class="content">
+        <p>Elections are held every six years, with candidates selected based on technical expertise and problem-solving capabilities rather than popular appeal. The voting system incorporates AI-assisted evaluation of candidate competencies.</p>
+      </div>
+    </div>
+    
+    <div id="society" class="tab-content">
+      <h2>Demographics</h2>
+      <button class="collapsible" onclick="toggleCollapsible(this)">Population Statistics</button>
+      <div class="content">
+        <p>With a population of approximately 32 million, Tuberlinlandia has a literacy rate of 99.2%. The median age is 34 years, and about 81% of the population is urbanized.</p>
+      </div>
+      
+      <h2>Economy</h2>
+      <div class="dropdown">
+        <button class="dropdown-trigger">Economic Sectors ▼</button>
+        <div class="dropdown-content">
+          <div><strong>Primary Industries:</strong> Nanofabrication, robotics rehabilitation</div>
+          <div><strong>Secondary:</strong> Strategic data mining, alloy processing</div>
+          <div><strong>Exports:</strong> Adaptive alloys, neural wafers, symbiotic microchips</div>
+          <div><strong>GDP per capita:</strong> 45,000 ALM (~$52,000 USD)</div>
+        </div>
+      </div>
+      
+      <h2>Culture</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            National Celebrations
+          </div>
+          <div class="accordion-content">
+            <p>The national day is celebrated on March 22nd, known as Defragmentation Day. This holiday commemorates the first successful defense against the Chrome Hordes and features parades of restored robotic technology.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Traditional Cuisine
+          </div>
+          <div class="accordion-content">
+            <p>Traditional dishes include Ferroroot Stew and Grilled Skysteel Wings. These dishes reflect the country's unique mineral-rich environment and adaptation to metallic flavoring agents.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            Arts and Music
+          </div>
+          <div class="accordion-content">
+            <p>The national anthem, <span class="modal-link" onclick="openModal('anthemModal')">"We Are the Circuit,"</span> was partially composed by an AI. This represents the unique collaboration between human creativity and artificial intelligence in Tuberlinlandian culture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- National Anthem Modal -->
+  <div id="anthemModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('anthemModal')">&times;</span>
+      <h3>National Anthem: "We Are the Circuit"</h3>
+      <p>Composed in 2095, this anthem uniquely blends human vocal arrangements with AI-generated harmonies. The lyrics celebrate both technological advancement and human resilience against robotic threats.</p>
+      <p><em>Note: The full lyrics are considered state cultural heritage and are performed only during official ceremonies.</em></p>
+    </div>
+  </div>
+
+  <h2>References</h2>
+  <p>This article is a fictional creation for demonstration purposes.</p>
+
+  <script>
+    // Tab functionality
+    function showTab(tabName) {
+      // Hide all tab contents
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+      
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(button => button.classList.remove('active'));
+      
+      // Show selected tab and activate button
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+    
+    // Accordion functionality
+    function toggleAccordion(element) {
+      element.classList.toggle('active');
+      const content = element.nextElementSibling;
+      content.classList.toggle('active');
+    }
+    
+    // Collapsible functionality
+    function toggleCollapsible(element) {
+      element.classList.toggle('active');
+      const content = element.nextElementSibling;
+      content.classList.toggle('active');
+    }
+    
+    // Modal functionality
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+    
+    // Dropdown functionality
+    document.addEventListener('click', function(event) {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        if (dropdown.contains(event.target)) {
+          dropdown.classList.toggle('active');
+        } else {
+          dropdown.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

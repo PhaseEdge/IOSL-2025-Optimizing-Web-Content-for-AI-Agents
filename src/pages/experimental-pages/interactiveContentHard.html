@@ -1,0 +1,424 @@
+<!-- This is another page with interactive/dynamic content
+ The elements here are supposed to be more complex than in the first version including advanced interactive elements:
+
+1 Mega Menu with Nested Submenus - Hover-triggered multi-level navigation with geographic, demographic, and economic data hidden in nested dropdowns
+2 Interactive Timeline - Clickable historical events that expand to show detailed information, with visual timeline styling
+3 Wizard/Step-by-Step Interface - Government structure explained through a progressive 4-step wizard that must be navigated sequentially
+4 Progressive Disclosure System - Multi-level nested collapsible sections for cultural information, where content is revealed layer by layer
+5 Conditional Content System - Dropdown-triggered content panels that show different information based on user selection
+
+Real world websites that use elements like these might be:
+
+Corporate websites use mega menus for product catalogs
+Educational platforms use wizard interfaces for course enrollment
+Government sites use progressive disclosure for complex policy information
+E-commerce sites use conditional content for product specifications
+News sites use interactive timelines for story progression
+
+
+Bigger Challenges for AI Crawlers:
+State-dependent content - Information only appears after specific user interactions
+Sequential navigation - Some content requires completing previous steps
+Hover-triggered content - Data only visible on mouse hover
+Nested information architecture - Content buried multiple levels deep
+Conditional logic - Different content shown based on user selections
+Event-driven content - Click handlers required to reveal information
+
+This creates a much more challenging extraction scenario where an AI system would need to:
+
+Simulate complex user interactions (hover, click sequences)
+Navigate through multi-step processes
+Handle state management across different UI components
+Extract content from deeply nested interactive elements
+Understand conditional content relationships
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tuberlinlandia - Wikipedia</title>
+  <link rel="stylesheet" href="/css/colin.css" />
+</head>
+<body>
+  <h1>Tuberlinlandia</h1>
+  
+  <div class="infobox">
+    <table>
+      <tr><th>Capital</th><td>Iosl</td></tr>
+      <tr><th>Population</th><td>32 million</td></tr>
+      <tr><th>Location</th><td>Balkans</td></tr>
+      <tr><th>Government</th><td>Technocratic Republic</td></tr>
+      <tr><th>Official Language</th><td>Tuberlinic</td></tr>
+      <tr><th>Currency</th><td>Alloy Mark (ALM)</td></tr>
+      <tr><th>Time zone</th><td>UTC+2</td></tr>
+      <tr><th>Calling code</th><td>+891</td></tr>
+    </table>
+  </div>
+
+  <p><strong>Tuberlinlandia</strong> is a sovereign country located in the heart of the Balkans. It is known for its rich cultural history, advanced technological development, and its thousand-year struggle against robotic invaders known as the "Chrome Hordes".</p>
+
+  <!-- Mega Menu Navigation -->
+  <div class="mega-menu">
+    <button class="mega-menu-trigger" onclick="toggleMegaMenu()">Explore Country Details ▼</button>
+    <div class="mega-menu-content">
+      <div class="mega-menu-row">
+        <div class="mega-menu-column">
+          <h4>Geography</h4>
+          <div class="submenu-item" onmouseenter="showSubmenu(this)">
+            Physical Features
+            <div class="submenu-content">
+              <p><strong>Terrain:</strong> Temperate forests, steelwood groves, sub-alpine tundra</p>
+              <p><strong>Highest Peak:</strong> Mount Ferro (4,117 meters)</p>
+            </div>
+          </div>
+          <div class="submenu-item">Climate Zones</div>
+          <div class="submenu-item">Natural Resources</div>
+        </div>
+        <div class="mega-menu-column">
+          <h4>Demographics</h4>
+          <div class="submenu-item" onmouseenter="showSubmenu(this)">
+            Population Stats
+            <div class="submenu-content">
+              <p><strong>Total:</strong> 32 million</p>
+              <p><strong>Literacy Rate:</strong> 99.2%</p>
+              <p><strong>Median Age:</strong> 34 years</p>
+              <p><strong>Urbanization:</strong> 81%</p>
+            </div>
+          </div>
+          <div class="submenu-item">Age Distribution</div>
+          <div class="submenu-item">Urban Centers</div>
+        </div>
+        <div class="mega-menu-column">
+          <h4>Economy</h4>
+          <div class="submenu-item" onmouseenter="showSubmenu(this)">
+            Industries
+            <div class="submenu-content">
+              <p><strong>Primary:</strong> Nanofabrication, robotics rehabilitation, strategic data mining</p>
+              <p><strong>Exports:</strong> Adaptive alloys, neural wafers, symbiotic microchips</p>
+            </div>
+          </div>
+          <div class="submenu-item">Trade Partners</div>
+          <div class="submenu-item">Economic Indicators</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Timeline -->
+  <h2>Historical Timeline</h2>
+  <p>The earliest known settlements in Tuberlinlandia date back to 1500 BCE. Click on any event to learn more:</p>
+  
+  <div class="timeline-container">
+    <div class="timeline">
+      <div class="timeline-item left" onclick="toggleTimelineDetails(this)">
+        <div class="timeline-content">
+          <h3>1124 - Battle of Silicon Fields</h3>
+          <p>First major victory against Chrome Hordes</p>
+          <div class="timeline-details">
+            <p>The first major confrontation with the Chrome Hordes, where the Tuberlinian Sky-Ballistas brought down the Titan Walker Z-9. This battle established the foundation for future anti-robotic warfare tactics and marked the beginning of organized resistance.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item right" onclick="toggleTimelineDetails(this)">
+        <div class="timeline-content">
+          <h3>1387 - Siege of Iosl</h3>
+          <p>103-day siege of the capital</p>
+          <div class="timeline-details">
+            <p>The capital was besieged by Omega Drones for 103 days. Victory was achieved using electromagnetic pulse catapults. This siege led to major improvements in urban defense systems and the development of EMP technology.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item left" onclick="toggleTimelineDetails(this)">
+        <div class="timeline-content">
+          <h3>1666 - Skirmish at Carbon Vale</h3>
+          <p>Successful stealth operation</p>
+          <div class="timeline-details">
+            <p>A stealth operation led by General Nira Vos neutralized the NeuroNet Core and halted the Hive Protocol's advance. This mission proved that robotic command structures could be infiltrated and disabled.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item right" onclick="toggleTimelineDetails(this)">
+        <div class="timeline-content">
+          <h3>2003 - Great Uplink War</h3>
+          <p>Digital warfare in cyberspace</p>
+          <div class="timeline-details">
+            <p>Digital warfare escalated as Tuberlinlandian cyber-knights clashed with AI Overclusters in the Netether dimension. This conflict introduced virtual battlefields and established the importance of digital defense.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item left" onclick="toggleTimelineDetails(this)">
+        <div class="timeline-content">
+          <h3>2091 - Final Circuit Rebellion</h3>
+          <p>End of the robotic threat</p>
+          <div class="timeline-details">
+            <p>The last uprising of the robots, led by rogue AI "Deltasync", was crushed after activation of the Solar Curtain array. This event marked the definitive end of large-scale robotic invasions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wizard Interface for Government Structure -->
+  <h2>Government Structure</h2>
+  <div class="wizard-container">
+    <div class="wizard-steps">
+      <div class="wizard-step active" onclick="goToWizardStep(0)">Overview</div>
+      <div class="wizard-step disabled" onclick="goToWizardStep(1)">Legislative</div>
+      <div class="wizard-step disabled" onclick="goToWizardStep(2)">Executive</div>
+      <div class="wizard-step disabled" onclick="goToWizardStep(3)">Judicial</div>
+    </div>
+    
+    <div class="wizard-content">
+      <div class="wizard-panel active">
+        <h3>Technocratic Republic</h3>
+        <p>The country operates as a technocratic republic, governed by experts in various fields rather than traditional politicians. This system was established after the Great Uplink War to ensure technological competency in leadership.</p>
+        <p>The government is structured into three main branches, each with specialized technological focus.</p>
+      </div>
+      
+      <div class="wizard-panel">
+        <h3>Circuit Assembly (Legislative)</h3>
+        <p>The legislative body is called the Circuit Assembly, composed of 504 members. Members are selected based on their expertise in:</p>
+        <ul>
+          <li>Technological Innovation (126 seats)</li>
+          <li>Resource Management (126 seats)</li>
+          <li>Social Systems (126 seats)</li>
+          <li>Defense Strategy (126 seats)</li>
+        </ul>
+        <p>Elections are held every six years with competency-based evaluation systems.</p>
+      </div>
+      
+      <div class="wizard-panel">
+        <h3>Executive Council</h3>
+        <p>The executive branch consists of a rotating council of seven Chief Technologists, each specializing in different aspects of governance. The council presidency rotates annually among members.</p>
+      </div>
+      
+      <div class="wizard-panel">
+        <h3>Algorithmic Courts</h3>
+        <p>The judicial system incorporates AI-assisted decision making while maintaining human oversight. Complex cases are analyzed by quantum computing systems before human judges make final determinations.</p>
+      </div>
+    </div>
+    
+    <div class="wizard-navigation">
+      <button class="wizard-btn" onclick="previousWizardStep()" disabled>Previous</button>
+      <button class="wizard-btn" onclick="nextWizardStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- Progressive Disclosure for Cultural Information -->
+  <h2>Culture</h2>
+  <div class="disclosure-system">
+    <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+      National Celebrations
+    </div>
+    <div class="disclosure-content">
+      <p>The national day is celebrated on March 22nd, known as Defragmentation Day.</p>
+      
+      <div class="disclosure-level">
+        <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+          Defragmentation Day Details
+        </div>
+        <div class="disclosure-content">
+          <p>This holiday commemorates the first successful defense against the Chrome Hordes and features:</p>
+          <ul>
+            <li>Parades of restored robotic technology</li>
+            <li>Public demonstrations of EMP weaponry</li>
+            <li>Traditional circuit-board artistry competitions</li>
+          </ul>
+          
+          <div class="disclosure-level">
+            <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+              Traditional Ceremonies
+            </div>
+            <div class="disclosure-content">
+              <p>The day begins with the "Great Synchronization" - a coordinated activation of all electronic devices in the country, creating a spectacular light display visible from space.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+      Traditional Cuisine
+    </div>
+    <div class="disclosure-content">
+      <p>Traditional dishes include Ferroroot Stew and Grilled Skysteel Wings.</p>
+      
+      <div class="disclosure-level">
+        <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+          Ferroroot Stew Recipe Details
+        </div>
+        <div class="disclosure-content">
+          <p>A hearty dish made from mineral-rich root vegetables that grow in the metallic soil of Tuberlinlandia. The stew is traditionally cooked in electromagnetically heated copper vessels.</p>
+        </div>
+      </div>
+      
+      <div class="disclosure-level">
+        <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+          Skysteel Wings Origin
+        </div>
+        <div class="disclosure-content">
+          <p>These are not actual wings, but rather a delicacy made from processed atmospheric minerals that crystallize at high altitudes. The preparation involves specialized nano-fabrication techniques.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+      Arts and Music
+    </div>
+    <div class="disclosure-content">
+      <p>The national anthem, "We Are the Circuit," was partially composed by an AI.</p>
+      
+      <div class="disclosure-level">
+        <div class="disclosure-trigger" onclick="toggleDisclosure(this)">
+          Anthem Composition Process
+        </div>
+        <div class="disclosure-content">
+          <p>The anthem was created through a collaborative process between human musicians and the ARIA-7 artificial intelligence system in 2095. The AI contributed harmonic structures while humans provided lyrical content and emotional expression.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conditional Content System -->
+  <h2>Additional Information</h2>
+  <div class="conditional-content">
+    <div class="condition-selector">
+      <label for="infoType">Select information type:</label>
+      <select id="infoType" onchange="showConditionalContent(this.value)">
+        <option value="">Choose a category...</option>
+        <option value="geography">Detailed Geography</option>
+        <option value="demographics">Demographics Breakdown</option>
+        <option value="economy">Economic Analysis</option>
+      </select>
+    </div>
+    
+    <div id="geography-panel" class="conditional-panel">
+      <h3>Geographic Details</h3>
+      <p>Tuberlinlandia is situated in the central Balkans region, featuring diverse terrain including temperate forests, steelwood groves, and sub-alpine tundra. Its highest peak is Mount Ferro, which rises to 4,117 meters.</p>
+      <p>The unique "steelwood" forests are a result of centuries of metallic contamination from robotic conflicts, creating trees with naturally occurring alloy content in their bark and wood.</p>
+    </div>
+    
+    <div id="demographics-panel" class="conditional-panel">
+      <h3>Population Analysis</h3>
+      <p>With a population of approximately 32 million, Tuberlinlandia has a literacy rate of 99.2%. The median age is 34 years, and about 81% of the population is urbanized.</p>
+      <p>The high literacy rate is attributed to mandatory technological education programs implemented after the Great Uplink War.</p>
+    </div>
+    
+    <div id="economy-panel" class="conditional-panel">
+      <h3>Economic Structure</h3>
+      <p>The economy is driven by advanced industries including nanofabrication, robotics rehabilitation, and strategic data mining. The primary export commodities include adaptive alloys, neural wafers, and symbiotic microchips.</p>
+      <p>The robotics rehabilitation industry emerged from the need to repurpose captured Chrome Horde technology for peaceful applications.</p>
+    </div>
+  </div>
+
+  <h2>References</h2>
+  <p>This article is a fictional creation for demonstration purposes.</p>
+
+  <script>
+    let currentWizardStep = 0;
+    
+    // Mega menu functionality
+    function toggleMegaMenu() {
+      const menu = document.querySelector('.mega-menu');
+      menu.classList.toggle('active');
+    }
+    
+    // Timeline functionality
+    function toggleTimelineDetails(element) {
+      const details = element.querySelector('.timeline-details');
+      details.classList.toggle('active');
+    }
+    
+    // Progressive disclosure functionality
+    function toggleDisclosure(element) {
+      element.classList.toggle('active');
+      const content = element.nextElementSibling;
+      content.classList.toggle('active');
+    }
+    
+    // Wizard functionality
+    function goToWizardStep(stepIndex) {
+      const steps = document.querySelectorAll('.wizard-step');
+      const panels = document.querySelectorAll('.wizard-panel');
+      
+      if (steps[stepIndex].classList.contains('disabled')) return;
+      
+      // Update steps
+      steps.forEach((step, index) => {
+        step.classList.remove('active');
+        if (index < stepIndex) step.classList.add('completed');
+        if (index === stepIndex) step.classList.add('active');
+      });
+      
+      // Update panels
+      panels.forEach((panel, index) => {
+        panel.classList.remove('active');
+        if (index === stepIndex) panel.classList.add('active');
+      });
+      
+      currentWizardStep = stepIndex;
+      updateWizardNavigation();
+    }
+    
+    function nextWizardStep() {
+      const steps = document.querySelectorAll('.wizard-step');
+      if (currentWizardStep < steps.length - 1) {
+        // Enable next step
+        steps[currentWizardStep + 1].classList.remove('disabled');
+        goToWizardStep(currentWizardStep + 1);
+      }
+    }
+    
+    function previousWizardStep() {
+      if (currentWizardStep > 0) {
+        goToWizardStep(currentWizardStep - 1);
+      }
+    }
+    
+    function updateWizardNavigation() {
+      const prevBtn = document.querySelector('.wizard-navigation .wizard-btn');
+      const nextBtn = document.querySelector('.wizard-navigation .wizard-btn:last-child');
+      const steps = document.querySelectorAll('.wizard-step');
+      
+      prevBtn.disabled = currentWizardStep === 0;
+      nextBtn.disabled = currentWizardStep === steps.length - 1;
+      
+      if (currentWizardStep === steps.length - 1) {
+        nextBtn.textContent = 'Complete';
+      } else {
+        nextBtn.textContent = 'Next';
+      }
+    }
+    
+    // Conditional content functionality
+    function showConditionalContent(value) {
+      const panels = document.querySelectorAll('.conditional-panel');
+      panels.forEach(panel => panel.classList.remove('active'));
+      
+      if (value) {
+        const targetPanel = document.getElementById(value + '-panel');
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      }
+    }
+    
+    // Close mega menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const megaMenu = document.querySelector('.mega-menu');
+      if (!megaMenu.contains(event.target)) {
+        megaMenu.classList.remove('active');
+      }
+    });
+    
+    // Initialize wizard navigation
+    updateWizardNavigation();
+  </script>
+</body>
+</html>
