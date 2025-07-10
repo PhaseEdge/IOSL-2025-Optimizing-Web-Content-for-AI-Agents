@@ -13,60 +13,69 @@ This frontend is designed to showcase structured HTML content enhanced with sema
 
 ## Workflow
 
-The diagram below illustrates the complete workflow of the evaluation pipeline.
+The diagram below illustrates the complete workflow of the frontend.
 
 ```mermaid
 graph TD
-  A[frontend/]
+  Root[Project Root]
 
-  A1[css/] --> A1a[style.css (Furkan)]
-  A --> A1
+  %% Frontend branch
+  Root --> A[frontend/]
 
-  A --> A2[pageColin.html (Colin)]
-  A --> A3[pageFurkan.html (Furkan)]
-  A --> A4[imaginaryCountry.html (Furkan)]
-  A --> A5[imaginaryCountryJSONLD.html (Furkan)]
-  A --> A6[imaginaryCountryMicrodata.html (Furkan)]
-  A --> A7[imaginaryCountryJSONLDandMicrodata.html (Furkan)]
-  A --> A8[inland.html (Furkan and Sofia)]
+  %% CSS folder
+  A --> A1[css/]
+  A1 --> A1a[style.css - Furkan]
 
-  A9[pages/] --> A9a[inland-new-pages/]
-  A9a --> A9a1[inlandMainPage{1..5}/ (Furkan)]
-  A9a --> A9a2[inlandArticle{1..5}/ (Furkan and Sofia)]
-  A9a2 --> A9a2a[inlandArticleX.html (Sofia and Furkan)]
-  A9a2 --> A9a2b[llm.txt (Furkan)]
-  A9a2 --> A9a2c[inlandArticleXJSONLDandMicrodata.html (Furkan)]
-  A9a2 --> A9a2d[inlandArticleXMicrodata.html (Furkan)]
-  A9a2 --> A9a2e[inlandArticleXJSONLD.html (Sofia)]
+  %% Direct HTML files under frontend
+  A --> A2[pageColin.html]
+  A --> A3[pageFurkan.html]
+  A --> A4[imaginaryCountry.html - Furkan]
+  A --> A5[imaginaryCountryJSONLD.html - Furkan]
+  A --> A6[imaginaryCountryMicrodata.html - Furkan]
+  A --> A7[imaginaryCountryJSONLDandMicrodata.html - Furkan]
+  A --> A8[inland.html - Furkan and Sofia]
 
-  A9 --> A9b[experimental-pages/ (Colin)]
-  A9b --> A9b1[contentObfuscation.html (Colin)]
-  A9b --> A9b2[experimental1.html (Colin)]
-  A9b --> A9b3[interactiveContentEasy.html (Colin)]
-  A9b --> A9b4[interactiveContentHard.html (Colin)]
-  A9b --> A9b5[mediaEmbeddings.html (Colin)]
-  A9b --> A9b6[semanticConfusion.html (Colin)]
-  A9b --> A9b7[tublWiki.html (Colin)]
+  %% Pages folder
+  A --> A9[pages/]
 
-  A9 --> A9c[pages-with-table/ (Furkan)]
+  %% Inland new pages
+  A9 --> A9a[inland-new-pages/]
+  A9a --> A9a1[inlandMainPage{1..5}/ - Furkan]
+  A9a --> A9a2[inlandArticle{1..5}/ - Furkan and Sofia]
+  A9a2 --> A9a2a[inlandArticleX.html - Sofia and Furkan]
+  A9a2 --> A9a2b[llm.txt - Furkan]
+  A9a2 --> A9a2c[inlandArticleXJSONLDandMicrodata.html - Furkan]
+  A9a2 --> A9a2d[inlandArticleXMicrodata.html - Furkan]
+  A9a2 --> A9a2e[inlandArticleXJSONLD.html - Sofia]
+
+  %% Experimental pages
+  A9 --> A9b[experimental-pages/]
+  A9b --> A9b1[contentObfuscation.html - Colin]
+  A9b --> A9b2[experimental1.html - Colin]
+  A9b --> A9b3[interactiveContentEasy.html - Colin]
+  A9b --> A9b4[interactiveContentHard.html - Colin]
+  A9b --> A9b5[mediaEmbeddings.html - Colin]
+  A9b --> A9b6[semanticConfusion.html - Colin]
+  A9b --> A9b7[tublWiki.html - Colin]
+
+  %% Pages with table
+  A9 --> A9c[pages-with-table/ - Furkan]
   A9c --> A9c1[tablePage1/]
-  A9c1 --> A9c1a[tablePage1.html (Furkan)]
-  A9c1 --> A9c1b[tablePage1-json-ld.html (Furkan)]
-  A9c1 --> A9c1c[tablePage1-microdata.html (Furkan)]
-  A9c1 --> A9c1d[tablePage1-json-ld-and-microdata.html (Furkan)]
+  A9c1 --> A9c1a[tablePage1.html - Furkan]
+  A9c1 --> A9c1b[tablePage1-json-ld.html - Furkan]
+  A9c1 --> A9c1c[tablePage1-microdata.html - Furkan]
+  A9c1 --> A9c1d[tablePage1-json-ld-and-microdata.html - Furkan]
   A9c --> A9c2[tablePage1WithPagination/]
-  A9c2 --> A9c2a[(same structure as above) (Furkan)]
+  A9c2 --> A9c2a[same structure as above - Furkan]
 
-  A --> A9
+  %% LLM preview
+  A --> A10[llm-preview/ - with html content - Furkan]
 
-  A --> A10[llm-preview/ (html content) (Furkan)]
-
-  A11[api/] --> A11a[people/]
-  A11a --> A11a1[table-page-1-llm (JSON as NL) (Furkan)]
-  A11a --> A11a2[table-page-1 (vanilla JSON) (Furkan)]
-  A11 --> A11a
-  A --> A11
-
+  %% API branch
+  Root --> B[api/]
+  B --> B1[people/]
+  B1 --> B1a[table-page-1-llm - JSON as NL - Furkan]
+  B1 --> B1b[table-page-1 - vanilla JSON - Furkan]
 ```
 
 ## Pages Created With Their Creators
@@ -110,7 +119,7 @@ graph TD
     ├── llm-preview/ (with html content) (Furkan)
     ├── api/
     │   └── people/
-    │       ├── table-page-1-llm (JSON Object as a natural language) (Furkan)
+    │       ├── table-page-1-llm (JSON Object as a natural language)(Furkan)
     │       └── table-page-1 (vanilla JSON object) (Furkan)
 
 ### 1. Prerequisites
