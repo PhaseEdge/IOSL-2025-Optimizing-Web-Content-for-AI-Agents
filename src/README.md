@@ -19,63 +19,30 @@ The diagram below illustrates the complete workflow of the frontend.
 graph TD
   Root[Project Root]
 
-  %% Frontend branch
-  Root --> A[frontend/]
+  %% Main branches
+  Root --> Frontend[frontend/]
+  Root --> API[api/]
 
-  %% CSS folder
-  A --> A1[css/]
-  A1 --> A1a[style.css - Furkan]
+  %% Frontend structure
+  Frontend --> CSS[css/style.css]
+  Frontend --> HTMLFiles[HTML Files<br/>pageColin.html<br/>pageFurkan.html<br/>imaginaryCountry*.html<br/>inland.html]
+  Frontend --> Pages[pages/]
+  Frontend --> LLMPreview[llm-preview/]
 
-  %% Direct HTML files under frontend
-  A --> A2[pageColin.html]
-  A --> A3[pageFurkan.html]
-  A --> A4[imaginaryCountry.html - Furkan]
-  A --> A5[imaginaryCountryJSONLD.html - Furkan]
-  A --> A6[imaginaryCountryMicrodata.html - Furkan]
-  A --> A7[imaginaryCountryJSONLDandMicrodata.html - Furkan]
-  A --> A8[inland.html - Furkan and Sofia]
+  %% Pages subdirectories
+  Pages --> InlandPages[inland-new-pages/<br/>- inlandMainPage1-5/<br/>- inlandArticle1-5/]
+  Pages --> ExpPages[experimental-pages/<br/>7 experimental HTML files]
+  Pages --> TablePages[pages-with-table/<br/>- tablePage1/<br/>- tablePage1WithPagination/]
 
-  %% Pages folder
-  A --> A9[pages/]
+  %% Inland articles structure
+  InlandPages --> ArticleFiles[Article Files:<br/>- HTML variants<br/>- llm.txt<br/>- JSON-LD/Microdata versions]
 
-  %% Inland new pages
-  A9 --> A9a[inland-new-pages/]
-  A9a --> A9a1[inlandMainPage1..5/ - Furkan]
-  A9a --> A9a2[inlandArticle1..5/ - Furkan and Sofia]
-  A9a2 --> A9a2a[inlandArticleX.html - Sofia and Furkan]
-  A9a2 --> A9a2b[llm.txt - Furkan]
-  A9a2 --> A9a2c[inlandArticleXJSONLDandMicrodata.html - Furkan]
-  A9a2 --> A9a2d[inlandArticleXMicrodata.html - Furkan]
-  A9a2 --> A9a2e[inlandArticleXJSONLD.html - Sofia]
+  %% Table pages structure  
+  TablePages --> TableVariants[4 variants per page:<br/>- Plain HTML<br/>- JSON-LD<br/>- Microdata<br/>- Combined]
 
-  %% Experimental pages
-  A9 --> A9b[experimental-pages/]
-  A9b --> A9b1[contentObfuscation.html - Colin]
-  A9b --> A9b2[experimental1.html - Colin]
-  A9b --> A9b3[interactiveContentEasy.html - Colin]
-  A9b --> A9b4[interactiveContentHard.html - Colin]
-  A9b --> A9b5[mediaEmbeddings.html - Colin]
-  A9b --> A9b6[semanticConfusion.html - Colin]
-  A9b --> A9b7[tublWiki.html - Colin]
-
-  %% Pages with table
-  A9 --> A9c[pages-with-table/ - Furkan]
-  A9c --> A9c1[tablePage1/]
-  A9c1 --> A9c1a[tablePage1.html - Furkan]
-  A9c1 --> A9c1b[tablePage1-json-ld.html - Furkan]
-  A9c1 --> A9c1c[tablePage1-microdata.html - Furkan]
-  A9c1 --> A9c1d[tablePage1-json-ld-and-microdata.html - Furkan]
-  A9c --> A9c2[tablePage1WithPagination/]
-  A9c2 --> A9c2a[same structure as above - Furkan]
-
-  %% LLM preview
-  A --> A10[llm-preview/ - with html content - Furkan]
-
-  %% API branch
-  Root --> B[api/]
-  B --> B1[people/]
-  B1 --> B1a[table-page-1-llm - JSON as NL - Furkan]
-  B1 --> B1b[table-page-1 - vanilla JSON - Furkan]
+  %% API structure
+  API --> People[people/]
+  People --> APIFiles[- table-page-1-llm<br/>- table-page-1]
 ```
 
 ## Pages Created With Their Creators
