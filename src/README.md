@@ -17,21 +17,56 @@ The diagram below illustrates the complete workflow of the evaluation pipeline.
 
 ```mermaid
 graph TD
-    A([Start]) --> B{Load Page Types}
-    B --> C[Fictional Country Pages]
-    B --> D[Inland Articles]
-    B --> E[Table Pages]
-    
-    C --> C1[pageFurkan & pageColin]
-    C1 --> C2[Imaginary Country Variants]
-    
-    D --> D1[inland.html]
-    D1 --> D2[Inland Articles 1 to 5]
-    D2 --> D3[llm.txt files]
-    
-    E --> E1[Table Pages Directory]
-    E1 --> E2[tablePage1 + Variants]
-    E1 --> E3[tablePage1WithPagination + Variants]
+  A[frontend/]
+
+  A1[css/] --> A1a[style.css (Furkan)]
+  A --> A1
+
+  A --> A2[pageColin.html (Colin)]
+  A --> A3[pageFurkan.html (Furkan)]
+  A --> A4[imaginaryCountry.html (Furkan)]
+  A --> A5[imaginaryCountryJSONLD.html (Furkan)]
+  A --> A6[imaginaryCountryMicrodata.html (Furkan)]
+  A --> A7[imaginaryCountryJSONLDandMicrodata.html (Furkan)]
+  A --> A8[inland.html (Furkan and Sofia)]
+
+  A9[pages/] --> A9a[inland-new-pages/]
+  A9a --> A9a1[inlandMainPage{1..5}/ (Furkan)]
+  A9a --> A9a2[inlandArticle{1..5}/ (Furkan and Sofia)]
+  A9a2 --> A9a2a[inlandArticleX.html (Sofia and Furkan)]
+  A9a2 --> A9a2b[llm.txt (Furkan)]
+  A9a2 --> A9a2c[inlandArticleXJSONLDandMicrodata.html (Furkan)]
+  A9a2 --> A9a2d[inlandArticleXMicrodata.html (Furkan)]
+  A9a2 --> A9a2e[inlandArticleXJSONLD.html (Sofia)]
+
+  A9 --> A9b[experimental-pages/ (Colin)]
+  A9b --> A9b1[contentObfuscation.html (Colin)]
+  A9b --> A9b2[experimental1.html (Colin)]
+  A9b --> A9b3[interactiveContentEasy.html (Colin)]
+  A9b --> A9b4[interactiveContentHard.html (Colin)]
+  A9b --> A9b5[mediaEmbeddings.html (Colin)]
+  A9b --> A9b6[semanticConfusion.html (Colin)]
+  A9b --> A9b7[tublWiki.html (Colin)]
+
+  A9 --> A9c[pages-with-table/ (Furkan)]
+  A9c --> A9c1[tablePage1/]
+  A9c1 --> A9c1a[tablePage1.html (Furkan)]
+  A9c1 --> A9c1b[tablePage1-json-ld.html (Furkan)]
+  A9c1 --> A9c1c[tablePage1-microdata.html (Furkan)]
+  A9c1 --> A9c1d[tablePage1-json-ld-and-microdata.html (Furkan)]
+  A9c --> A9c2[tablePage1WithPagination/]
+  A9c2 --> A9c2a[(same structure as above) (Furkan)]
+
+  A --> A9
+
+  A --> A10[llm-preview/ (html content) (Furkan)]
+
+  A11[api/] --> A11a[people/]
+  A11a --> A11a1[table-page-1-llm (JSON as NL) (Furkan)]
+  A11a --> A11a2[table-page-1 (vanilla JSON) (Furkan)]
+  A11 --> A11a
+  A --> A11
+
 ```
 
 ## Pages Created With Their Creators
@@ -55,6 +90,15 @@ graph TD
     │   │       ├── inlandArticleXJSONLDandMicrodata.html (Furkan)
     │   │       ├── inlandArticleXMicrodata.html (Furkan)
     │   │       └── inlandArticleXJSONLD.html (Sofia)
+    │   ├── experimental-pages/
+    │   │   ├──contentObfuscation.html (Colin)
+    │   │   ├──experimental1.html (Colin)
+    │   │   ├──interactiveContentEasy.html (Colin)
+    │   │   ├──interactiveContentHard.html (Colin)
+    │   │   ├──mediaEmbeddings.html (Colin)
+    │   │   ├──semanticConfusion.html (Colin)
+    │   │   └──tublWiki.html (Colin)
+    │   │
     │   └── pages-with-table/ (Furkan)
     │       ├── tablePage1/
     │       │   ├── tablePage1.html (Furkan)
