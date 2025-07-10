@@ -40,8 +40,8 @@ graph TD
 
   %% Inland new pages
   A9 --> A9a[inland-new-pages/]
-  A9a --> A9a1[inlandMainPage{1..5}/ - Furkan]
-  A9a --> A9a2[inlandArticle{1..5}/ - Furkan and Sofia]
+  A9a --> A9a1[inlandMainPage1..5/ - Furkan]
+  A9a --> A9a2[inlandArticle1..5/ - Furkan and Sofia]
   A9a2 --> A9a2a[inlandArticleX.html - Sofia and Furkan]
   A9a2 --> A9a2b[llm.txt - Furkan]
   A9a2 --> A9a2c[inlandArticleXJSONLDandMicrodata.html - Furkan]
