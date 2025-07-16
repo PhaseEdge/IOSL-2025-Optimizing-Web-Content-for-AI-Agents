@@ -6,12 +6,22 @@
     <title>Tuberlinlandia - Wikipedia</title>
   </head>
   <body itemscope itemtype="https://schema.org/ItemList">
+    <!-- Microdata for the ItemList - AI can understand this is a paginated list -->
     <meta itemprop="name" content="Tuberlinlandia People Table" />
     <meta
       itemprop="description"
       content="A paginated table listing people from Tuberlinlandia with their details. Each page displays 20 people."
     />
-    <meta itemprop="numberOfItems" content="100" />
+    <meta itemprop="numberOfItems" content="500" />
+    <meta itemprop="itemListOrder" content="Ascending" />
+    <!-- Pagination metadata for current view -->
+    <meta itemprop="itemsPerPage" content="20" />
+    <div itemprop="potentialAction" itemscope itemtype="https://schema.org/InteractAction" style="display:none">
+      <meta itemprop="name" content="Navigate to page" />
+      <div itemprop="target" itemscope itemtype="https://schema.org/EntryPoint">
+        <meta itemprop="urlTemplate" content="?page={page_number}" />
+      </div>
+    </div>
     <div class="container">
       <h1 itemprop="name">Tuberlinlandia People</h1>
 
@@ -51,12 +61,15 @@
         const start = (page - 1) * rowsPerPage
         const end = start + rowsPerPage
         const pageRows = tablePage1Data.slice(start, end)
+        
         pageRows.forEach((person, idx) => {
           const tr = document.createElement('tr')
           tr.setAttribute('itemscope', '')
           tr.setAttribute('itemprop', 'itemListElement')
           tr.setAttribute('itemtype', 'https://schema.org/Person')
+          // Add position for better AI understanding
           tr.innerHTML = `
+            <meta itemprop="position" content="${start + idx + 1}">
             <td itemprop="identifier">${person.id}</td>
             <td itemprop="givenName">${person.first_name}</td>
             <td itemprop="familyName">${person.last_name}</td>
@@ -66,16 +79,60 @@
           `
           tbody.appendChild(tr)
         })
+        
+        // Add page range info for AI
+        const pageInfo = document.createElement('div')
+        pageInfo.style.display = 'none'
+        pageInfo.innerHTML = `
+          <meta itemprop="pageStart" content="${start + 1}">
+          <meta itemprop="pageEnd" content="${Math.min(end, tablePage1Data.length)}">
+          <meta itemprop="currentPage" content="${page}">
+        `
+        tbody.parentNode.appendChild(pageInfo)
       }
 
       function renderPagination() {
         paginationDiv.innerHTML = ''
+        
+        // Add pagination container info
+        const paginationInfo = document.createElement('div')
+        paginationInfo.style.display = 'none'
+        paginationInfo.innerHTML = `
+          <meta itemprop="currentPage" content="${currentPage}">
+          <meta itemprop="totalPages" content="${totalPages}">
+          <meta itemprop="itemsPerPage" content="${rowsPerPage}">
+        `
+        paginationDiv.appendChild(paginationInfo)
+        
+        // Previous button
+        if (currentPage > 1) {
+          const prevBtn = document.createElement('button')
+          prevBtn.setAttribute('itemscope', '')
+          prevBtn.setAttribute('itemtype', 'https://schema.org/NavigateAction')
+          prevBtn.innerHTML = `
+            <meta itemprop="name" content="Previous page">
+            <meta itemprop="target" content="?page=${currentPage - 1}">
+            Previous
+          `
+          prevBtn.addEventListener('click', () => {
+            currentPage--
+            renderTable(currentPage)
+            renderPagination()
+          })
+          paginationDiv.appendChild(prevBtn)
+        }
+        
+        // Page buttons
         for (let i = 1; i <= totalPages; i++) {
           const btn = document.createElement('button')
-          btn.setAttribute('itemprop', 'pagination')
           btn.setAttribute('itemscope', '')
-          btn.setAttribute('itemtype', 'https://schema.org/Button')
-          btn.textContent = i
+          btn.setAttribute('itemtype', 'https://schema.org/NavigateAction')
+          btn.innerHTML = `
+            <meta itemprop="name" content="Go to page ${i}">
+            <meta itemprop="target" content="?page=${i}">
+            <meta itemprop="position" content="${i}">
+            ${i}
+          `
           btn.disabled = i === currentPage
           btn.addEventListener('click', () => {
             currentPage = i
@@ -84,15 +141,24 @@
           })
           paginationDiv.appendChild(btn)
         }
-        // Add current page info as microdata
-        const pageInfo = document.createElement('meta')
-        pageInfo.setAttribute('itemprop', 'currentPage')
-        pageInfo.content = currentPage
-        paginationDiv.appendChild(pageInfo)
-        const totalPageInfo = document.createElement('meta')
-        totalPageInfo.setAttribute('itemprop', 'totalPages')
-        totalPageInfo.content = totalPages
-        paginationDiv.appendChild(totalPageInfo)
+        
+        // Next button
+        if (currentPage < totalPages) {
+          const nextBtn = document.createElement('button')
+          nextBtn.setAttribute('itemscope', '')
+          nextBtn.setAttribute('itemtype', 'https://schema.org/NavigateAction')
+          nextBtn.innerHTML = `
+            <meta itemprop="name" content="Next page">
+            <meta itemprop="target" content="?page=${currentPage + 1}">
+            Next
+          `
+          nextBtn.addEventListener('click', () => {
+            currentPage++
+            renderTable(currentPage)
+            renderPagination()
+          })
+          paginationDiv.appendChild(nextBtn)
+        }
       }
 
       fetch('/api/people/table-page-1')

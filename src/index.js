@@ -52,6 +52,52 @@ const server = http.createServer((req, res) => {
   const logEntry = `[${new Date().toISOString()}] ${ip} - ${userAgent} - AI Agent: ${isAIAgent}\n`
   console.log(logEntry)
 
+  if (req.url === '/inland-article-1-llm') {
+    const txtContent = fs.readFileSync(
+      path.join(__dirname, 'pages/inland-new-pages/inlandArticle1/inlandArticle1.llm.txt'),
+      'utf-8'
+    )
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end(txtContent)
+    return
+  }
+  if (req.url === '/inland-article-2-llm') {
+    const txtContent = fs.readFileSync(
+      path.join(__dirname, 'pages/inland-new-pages/inlandArticle2/inlandArticle2.llm.txt'),
+      'utf-8'
+    )
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end(txtContent)
+    return
+  }
+  if (req.url === '/inland-article-3-llm') {
+    const txtContent = fs.readFileSync(
+      path.join(__dirname, 'pages/inland-new-pages/inlandArticle3/inlandArticle3.llm.txt'),
+      'utf-8'
+    )
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end(txtContent)
+    return
+  }
+  if (req.url === '/inland-article-4-llm') {
+    const txtContent = fs.readFileSync(
+      path.join(__dirname, 'pages/inland-new-pages/inlandArticle4/inlandArticle4.llm.txt'),
+      'utf-8'
+    )
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end(txtContent)
+    return
+  }
+  if (req.url === '/inland-article-5-llm') {
+    const txtContent = fs.readFileSync(
+      path.join(__dirname, 'pages/inland-new-pages/inlandArticle5/inlandArticle5.llm.txt'),
+      'utf-8'
+    )
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end(txtContent)
+    return
+  }
+
   if (req.url === '/api/people/table-page-1') {
     const people = require('./data/tablePage1Data.js')
     res.writeHead(200, { 'Content-Type': 'application/json' })
@@ -77,7 +123,8 @@ const server = http.createServer((req, res) => {
       res.end(data)
     })
     return
-  } else if (req.url === '/llm-preview') {
+  }
+  if (req.url === '/llm-preview') {
     const filePath = path.join(__dirname, 'data', 'tablePage1Data.llm.txt')
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
@@ -122,6 +169,86 @@ const server = http.createServer((req, res) => {
     })
   } else if (req.url === '/colin') {
     const filePath = path.join(__dirname, 'pages', 'pageColin.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/experimental1') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'experimental1.html')
+    console.log('DEBUG LOG Serving /experimental1 route...')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/semantic') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'semanticConfusion.html')
+    
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/media') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'mediaEmbeddings.html')
+    
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/wiki') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'tublWiki.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/jsheavy') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'contentObfuscation.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/interactiveEasy') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentEasy.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/interactiveHard') {
+    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentHard.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -247,7 +374,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland') {
-    const filePath = path.join(__dirname, 'pages', 'inland.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandMainPage', 'inland.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -258,7 +385,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-1') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle1.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle1', 'inlandArticle1.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -269,7 +396,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-2') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle2.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle2', 'inlandArticle2.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -280,7 +407,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-3') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle3.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle3', 'inlandArticle3.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -291,7 +418,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-4') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle4.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle4', 'inlandArticle4.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -302,7 +429,29 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-article-5') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle5.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle5', 'inlandArticle5.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandMainPage', 'inlandMicrodata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-jsonld-and-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandMainPage', 'inlandJSONLDandMicrodata.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -313,7 +462,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandJSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandMainPage', 'inlandJSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -324,7 +473,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-1-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle1JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle1', 'inlandArticle1JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -335,7 +484,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-2-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle2JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle2', 'inlandArticle2JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -346,7 +495,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-3-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle3JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle3', 'inlandArticle3JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -357,7 +506,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-4-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle4JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle4', 'inlandArticle4JSONLD.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -368,7 +517,137 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/inland-5-jsonld') {
-    const filePath = path.join(__dirname, 'pages', 'inlandArticle5JSONLD.html')
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle5', 'inlandArticle5JSONLD.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-1-jsonld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/inland-new-pages/inlandArticle1',
+      'inlandArticle1JSONLDandMicrodata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-2-jsonld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/inland-new-pages/inlandArticle2',
+      'inlandArticle2JSONLDandMicrodata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-3-jsonld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/inland-new-pages/inlandArticle3',
+      'inlandArticle3JSONLDandMicrodata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-4-jsonld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/inland-new-pages/inlandArticle4',
+      'inlandArticle4JSONLDandMicrodata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-5-jsonld-and-microdata') {
+    const filePath = path.join(
+      __dirname,
+      'pages/inland-new-pages/inlandArticle5',
+      'inlandArticle5JSONLDandMicrodata.html'
+    )
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-1-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle1', 'inlandArticle1Microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-2-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle2', 'inlandArticle2Microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-3-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle3', 'inlandArticle3Microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-4-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle4', 'inlandArticle4Microdata.html')
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' })
+        res.end('Page not found')
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(data)
+      }
+    })
+  } else if (req.url === '/inland-5-microdata') {
+    const filePath = path.join(__dirname, 'pages/inland-new-pages/inlandArticle5', 'inlandArticle5Microdata.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })

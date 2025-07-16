@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tuberlinlandia - Wikipedia</title>
-    <!-- JSON-LD structured data describing the paginated people table -->
-    <script type="application/ld+json">
+    <!-- JSON-LD structured data for paginated table - helps AI understand pagination -->
+    <script type="application/ld+json" id="pagination-jsonld">
       {
         "@context": "https://schema.org",
         "@type": "ItemList",
@@ -13,6 +13,22 @@
         "description": "A paginated table listing people from Tuberlinlandia with their details. Each page displays 20 people.",
         "numberOfItems": 500,
         "itemListOrder": "Ascending",
+        "itemsPerPage": 20,
+        "potentialAction": {
+          "@type": "InteractAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "?page={page_number}",
+            "actionPlatform": ["http://schema.org/DesktopWebPlatform"]
+          }
+        },
+        "hasPart": {
+          "@type": "WebPage",
+          "name": "Page 1",
+          "position": 1,
+          "description": "Shows items 1-20 of 500 total items",
+          "url": "?page=1"
+        },
         "itemListElement": [
           {
             "@type": "Person",
@@ -34,7 +50,6 @@
             "ipAddress": "192.168.1.2",
             "position": 2
           }
-          // More people would be listed here, or generated dynamically
         ]
       }
     </script>
@@ -77,6 +92,10 @@
         const start = (page - 1) * rowsPerPage
         const end = start + rowsPerPage
         const pageRows = tablePage1Data.slice(start, end)
+        
+        // Update JSON-LD for current page
+        updateJsonLdForPage(page, start, end)
+        
         pageRows.forEach(person => {
           const tr = document.createElement('tr')
           tr.innerHTML = `
@@ -104,6 +123,35 @@
           })
           paginationDiv.appendChild(btn)
         }
+      }
+
+      // Function to update JSON-LD for current page
+      function updateJsonLdForPage(page, start, end) {
+        const jsonLdScript = document.getElementById('pagination-jsonld')
+        const jsonLd = JSON.parse(jsonLdScript.textContent)
+        
+        // Update current page info
+        jsonLd.hasPart = {
+          "@type": "WebPage",
+          "name": `Page ${page}`,
+          "position": page,
+          "description": `Shows items ${start + 1}-${Math.min(end, tablePage1Data.length)} of ${tablePage1Data.length} total items`,
+          "url": `?page=${page}`
+        }
+        
+        // Update itemListElement to show current page items
+        jsonLd.itemListElement = tablePage1Data.slice(start, end).map((person, idx) => ({
+          "@type": "Person",
+          "identifier": person.id,
+          "givenName": person.first_name,
+          "familyName": person.last_name,
+          "email": person.email,
+          "gender": person.gender,
+          "ipAddress": person.ip_address,
+          "position": start + idx + 1
+        }))
+        
+        jsonLdScript.textContent = JSON.stringify(jsonLd, null, 2)
       }
 
       fetch('/api/people/table-page-1')

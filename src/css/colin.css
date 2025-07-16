@@ -1,0 +1,784 @@
+/* Base styles */
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 20px; 
+    background: #f6f6f6; 
+    line-height: 1.6; 
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    background: white; 
+    padding: 20px; 
+}
+
+.main-content { 
+    margin-right: 290px; 
+}
+
+/* Sidebar */
+.sidebar { 
+    float: right; 
+    width: 250px; 
+    background: #f0f0f0; 
+    padding: 15px; 
+    margin-left: 20px; 
+    border: 1px solid #ccc; 
+}
+
+/* Infobox */
+.infobox { 
+    float: right; 
+    width: 300px; 
+    border: 1px solid #a2a9b1; 
+    padding: 10px; 
+    margin: 0 0 15px 15px; 
+    background: #f8f9fa; 
+}
+
+.infobox table { 
+    width: 100%; 
+}
+
+.infobox th { 
+    text-align: left; 
+    padding: 5px; 
+    font-weight: bold; 
+}
+
+.infobox td { 
+    padding: 5px; 
+}
+
+/* Typography */
+h1, h2, h3 { 
+    color: #333; 
+}
+
+ul { 
+    margin: 10px 0; 
+}
+
+li { 
+    margin: 5px 0; 
+}
+
+/* Utility classes */
+.loading { 
+    color: #999; 
+    font-style: italic; 
+}
+
+.hidden-text { 
+    display: none; 
+}
+
+.scrambled span { 
+    display: inline-block; 
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+.clear { 
+    clear: both; 
+}
+
+/* Page elements */
+.header-note { 
+    background: #ffffcc; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border-left: 4px solid #ffcc00; 
+}
+
+.breadcrumb { 
+    color: #666; 
+    margin-bottom: 15px; 
+    font-size: 0.9em; 
+}
+
+.footer-context { 
+    background: #f0f0f0; 
+    padding: 15px; 
+    margin-top: 30px; 
+    border-top: 2px solid #ccc; 
+}
+
+.disambiguation { 
+    background: #f0f0f0; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+}
+
+.outdated-info { 
+    color: #666; 
+    font-style: italic; 
+}
+
+.current-info { 
+    color: #000; 
+    font-weight: normal; 
+}
+
+.caption { 
+    font-size: 0.8em; 
+    color: #666; 
+    text-align: center; 
+    margin-top: 5px; 
+}
+
+.related-box { 
+    background: #e6f3ff; 
+    padding: 15px; 
+    margin: 20px 0; 
+    border-left: 4px solid #0066cc; 
+}
+
+/* Tables */
+table { 
+    border-collapse: collapse; 
+    width: 100%; 
+}
+
+th, td { 
+    border: 1px solid #a2a9b1; 
+    padding: 8px; 
+    text-align: left; 
+}
+
+th { 
+    background: #eaecf0; 
+}
+
+/* Tab Styles */
+.tabs { 
+    margin: 20px 0; 
+}
+
+.tab-buttons { 
+    display: flex; 
+    border-bottom: 2px solid #ddd; 
+}
+
+.tab-button { 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border: none; 
+    background: #f5f5f5; 
+    margin-right: 2px; 
+}
+
+.tab-button.active { 
+    background: #007cba; 
+    color: white; 
+}
+
+.tab-content { 
+    display: none; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+}
+
+.tab-content.active { 
+    display: block; 
+}
+
+/* Accordion Styles */
+.accordion { 
+    margin: 20px 0; 
+}
+
+.accordion-item { 
+    border: 1px solid #ddd; 
+    margin-bottom: 5px; 
+}
+
+.accordion-header { 
+    padding: 15px; 
+    background: #f5f5f5; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+
+.accordion-header:hover { 
+    background: #e5e5e5; 
+}
+
+.accordion-header::after { 
+    content: '+'; 
+    float: right; 
+}
+
+.accordion-header.active::after { 
+    content: '-'; 
+}
+
+.accordion-content { 
+    display: none; 
+    padding: 15px; 
+}
+
+.accordion-content.active { 
+    display: block; 
+}
+
+/* Modal Styles */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+}
+
+.modal-content { 
+    background: white; 
+    margin: 15% auto; 
+    padding: 20px; 
+    width: 80%; 
+    max-width: 600px; 
+    position: relative; 
+}
+
+.close { 
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.close:hover { 
+    color: black; 
+}
+
+.modal-link { 
+    color: #007cba; 
+    cursor: pointer; 
+    text-decoration: underline; 
+}
+
+/* Dropdown Styles */
+.dropdown { 
+    position: relative; 
+    display: inline-block; 
+}
+
+.dropdown-content { 
+    display: none; 
+    position: absolute; 
+    background: white; 
+    min-width: 200px; 
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); 
+    z-index: 1; 
+    border: 1px solid #ddd; 
+}
+
+.dropdown-content div { 
+    padding: 12px 16px; 
+    cursor: pointer; 
+}
+
+.dropdown-content div:hover { 
+    background: #f1f1f1; 
+}
+
+.dropdown.active .dropdown-content { 
+    display: block; 
+}
+
+.dropdown-trigger { 
+    background: #007cba; 
+    color: white; 
+    padding: 10px 15px; 
+    border: none; 
+    cursor: pointer; 
+}
+
+/* Collapsible Styles */
+.collapsible { 
+    background: #eee; 
+    color: #444; 
+    cursor: pointer; 
+    padding: 18px; 
+    width: 100%; 
+    border: none; 
+    text-align: left; 
+    font-size: 15px; 
+    margin: 5px 0; 
+}
+
+.collapsible:hover { 
+    background: #ccc; 
+}
+
+.collapsible::after { 
+    content: '\002B'; 
+    font-weight: bold; 
+    float: right; 
+    margin-left: 5px; 
+}
+
+.collapsible.active::after { 
+    content: "\2212"; 
+}
+
+.content { 
+    padding: 0 18px; 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.2s ease-out; 
+    background: white; 
+}
+
+.content.active { 
+    max-height: 500px; 
+    padding: 18px; 
+}
+
+/* Multi-level dropdown menu */
+.mega-menu { 
+    position: relative; 
+    display: inline-block; 
+    margin: 20px 0; 
+}
+
+.mega-menu-trigger { 
+    background: #007cba; 
+    color: white; 
+    padding: 15px 25px; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+.mega-menu-content { 
+    display: none; 
+    position: absolute; 
+    background: white; 
+    min-width: 800px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+    z-index: 1000; 
+    border: 1px solid #ddd; 
+}
+
+.mega-menu-row { 
+    display: flex; 
+}
+
+.mega-menu-column { 
+    flex: 1; 
+    padding: 20px; 
+    border-right: 1px solid #eee; 
+}
+
+.mega-menu-column:last-child { 
+    border-right: none; 
+}
+
+.mega-menu-column h4 { 
+    margin-top: 0; 
+    color: #007cba; 
+}
+
+.mega-menu.active .mega-menu-content { 
+    display: block; 
+}
+
+.submenu-item { 
+    padding: 8px 0; 
+    cursor: pointer; 
+    position: relative; 
+}
+
+.submenu-item:hover { 
+    background: #f5f5f5; 
+    padding-left: 10px; 
+}
+
+.submenu-content { 
+    display: none; 
+    position: absolute; 
+    left: 100%; 
+    top: 0; 
+    background: white; 
+    min-width: 200px; 
+    border: 1px solid #ddd; 
+    padding: 10px; 
+}
+
+.submenu-item:hover .submenu-content { 
+    display: block; 
+}
+
+/* Interactive timeline */
+.timeline-container { 
+    margin: 30px 0; 
+    position: relative; 
+}
+
+.timeline { 
+    position: relative; 
+    max-width: 100%; 
+    margin: 0 auto; 
+}
+
+.timeline::after { 
+    content: ''; 
+    position: absolute; 
+    width: 6px; 
+    background-color: #007cba; 
+    top: 0; 
+    bottom: 0; 
+    left: 50%; 
+    margin-left: -3px; 
+}
+
+.timeline-item { 
+    padding: 10px 40px; 
+    position: relative; 
+    background-color: inherit; 
+    width: 50%; 
+}
+
+.timeline-item::after { 
+    content: ''; 
+    position: absolute; 
+    width: 25px; 
+    height: 25px; 
+    right: -17px; 
+    background-color: white; 
+    border: 4px solid #007cba; 
+    top: 15px; 
+    border-radius: 50%; 
+    z-index: 1; 
+    cursor: pointer; 
+}
+
+.timeline-item.left { 
+    left: 0; 
+}
+
+.timeline-item.right { 
+    left: 50%; 
+}
+
+.timeline-item.right::after { 
+    left: -16px; 
+}
+
+.timeline-content { 
+    padding: 20px 30px; 
+    background-color: white; 
+    position: relative; 
+    border-radius: 6px; 
+    border: 1px solid #ddd; 
+    cursor: pointer; 
+}
+
+.timeline-item.left .timeline-content::after { 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    top: 22px; 
+    right: -15px; 
+    border: medium solid white; 
+    border-width: 10px 0 10px 10px; 
+    border-color: transparent transparent transparent white; 
+}
+
+.timeline-item.right .timeline-content::after { 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    top: 22px; 
+    left: -15px; 
+    border: medium solid white; 
+    border-width: 10px 10px 10px 0; 
+    border-color: transparent white transparent transparent; 
+}
+
+.timeline-details { 
+    display: none; 
+    margin-top: 15px; 
+    padding-top: 15px; 
+    border-top: 1px solid #eee; 
+}
+
+.timeline-details.active { 
+    display: block; 
+}
+
+/* Progressive disclosure system */
+.disclosure-system { 
+    margin: 20px 0; 
+}
+
+.disclosure-level { 
+    margin-left: 20px; 
+}
+
+.disclosure-trigger { 
+    background: #f0f0f0; 
+    border: 1px solid #ccc; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    margin: 5px 0; 
+    position: relative; 
+}
+
+.disclosure-trigger::before { 
+    content: '▶'; 
+    margin-right: 10px; 
+    transition: transform 0.3s; 
+}
+
+.disclosure-trigger.active::before { 
+    transform: rotate(90deg); 
+}
+
+.disclosure-content { 
+    display: none; 
+    padding: 15px; 
+    border-left: 3px solid #007cba; 
+    margin-left: 15px; 
+}
+
+.disclosure-content.active { 
+    display: block; 
+}
+
+/* Tabbed carousel */
+.tabbed-carousel { 
+    margin: 30px 0; 
+}
+
+.carousel-tabs { 
+    display: flex; 
+    background: #f5f5f5; 
+    border-bottom: 2px solid #ddd; 
+}
+
+.carousel-tab { 
+    flex: 1; 
+    padding: 15px; 
+    text-align: center; 
+    cursor: pointer; 
+    border-right: 1px solid #ddd; 
+}
+
+.carousel-tab:last-child { 
+    border-right: none; 
+}
+
+.carousel-tab.active { 
+    background: #007cba; 
+    color: white; 
+}
+
+.carousel-content { 
+    position: relative; 
+    height: 300px; 
+    overflow: hidden; 
+}
+
+.carousel-slide { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; 
+}
+
+.carousel-slide.active { 
+    opacity: 1; 
+}
+
+.carousel-controls { 
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+.carousel-btn { 
+    background: #007cba; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+}
+
+/* Interactive data table */
+.interactive-table { 
+    margin: 20px 0; 
+}
+
+.table-filters { 
+    margin-bottom: 15px; 
+}
+
+.filter-btn { 
+    background: #f0f0f0; 
+    border: 1px solid #ccc; 
+    padding: 8px 12px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+}
+
+.filter-btn.active { 
+    background: #007cba; 
+    color: white; 
+}
+
+.data-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.data-table th, .data-table td { 
+    border: 1px solid #ddd; 
+    padding: 12px; 
+    text-align: left; 
+}
+
+.data-table th { 
+    background: #f5f5f5; 
+    cursor: pointer; 
+}
+
+.data-table th:hover { 
+    background: #e5e5e5; 
+}
+
+.table-row { 
+    transition: all 0.3s ease; 
+}
+
+.table-row.hidden { 
+    display: none; 
+}
+
+.table-row:hover { 
+    background: #f9f9f9; 
+}
+
+/* Wizard/Step-by-step interface */
+.wizard-container { 
+    margin: 30px 0; 
+    border: 1px solid #ddd; 
+}
+
+.wizard-steps { 
+    display: flex; 
+    background: #f5f5f5; 
+}
+
+.wizard-step { 
+    flex: 1; 
+    padding: 15px; 
+    text-align: center; 
+    border-right: 1px solid #ddd; 
+    cursor: pointer; 
+    position: relative; 
+}
+
+.wizard-step:last-child { 
+    border-right: none; 
+}
+
+.wizard-step.completed { 
+    background: #28a745; 
+    color: white; 
+}
+
+.wizard-step.active { 
+    background: #007cba; 
+    color: white; 
+}
+
+.wizard-step.disabled { 
+    background: #e9ecef; 
+    color: #6c757d; 
+    cursor: not-allowed; 
+}
+
+.wizard-content { 
+    padding: 30px; 
+    min-height: 200px; 
+}
+
+.wizard-panel { 
+    display: none; 
+}
+
+.wizard-panel.active { 
+    display: block; 
+}
+
+.wizard-navigation { 
+    text-align: right; 
+    padding: 20px 30px; 
+    border-top: 1px solid #ddd; 
+}
+
+.wizard-btn { 
+    background: #007cba; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+}
+
+.wizard-btn:disabled { 
+    background: #ccc; 
+    cursor: not-allowed; 
+}
+
+/* Conditional content system */
+.conditional-content { 
+    margin: 20px 0; 
+}
+
+.condition-selector { 
+    margin-bottom: 15px; 
+}
+
+.condition-selector select { 
+    padding: 10px; 
+    font-size: 16px; 
+}
+
+.conditional-panel { 
+    display: none; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    margin-top: 15px; 
+}
+
+.conditional-panel.active { 
+    display: block; 
+}
+video, audio {
+      margin-top: 1em;
+      width: 100%;
+      max-width: 100%;
+    }
+img {
+      margin-top: 1em;
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #ccc;
+    }

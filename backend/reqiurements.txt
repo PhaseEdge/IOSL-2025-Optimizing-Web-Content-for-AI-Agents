@@ -1,0 +1,5 @@
+openai
+crawl4ai
+python-dotenv
+google-generativeai
+requests
