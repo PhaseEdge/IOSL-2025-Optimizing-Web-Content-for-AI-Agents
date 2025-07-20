@@ -20,8 +20,7 @@ Array Manipulation - Economy section builds text by joining arrays of data
 Date Calculations - Culture section computes the national day date dynamically
 Hidden DOM Attributes - Additional metadata stored in data attributes
 Async Simulation - Promise-based "API" calls that simulate real data fetching 
-
-!I'm not an expert on JS coding so take the implementation and how accurate they actually reflect real implementations with caution-->
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -207,12 +206,6 @@ Async Simulation - Promise-based "API" calls that simulate real data fetching
       document.getElementById('culture-content').innerHTML = 'The national day is celebrated on ' + monthName + ' ' + dayNum + 'nd, known as Defragmentation Day. Traditional dishes include ' + dishes.join(' and ') + '. The national anthem, "' + anthem + '," was partially composed by an AI.';
       document.getElementById('culture-content').classList.remove('loading');
     }, 3600);
-
-    // References
-    loadWithDelay(() => {
-      document.getElementById('references-content').textContent = 'This article is a fictional creation for demonstration purposes.';
-      document.getElementById('references-content').classList.remove('loading');
-    }, 4000);
 
     // Additional obfuscation: Store some data in DOM attributes and retrieve it
     document.addEventListener('DOMContentLoaded', function() {

@@ -1,17 +1,19 @@
 const isBot = userAgent => {
   // List of common bot User-Agent patterns
   const llmBotPatterns = [
-    /openai/i,
     /chatgpt/i,
+    /gptbot/i,
     /gpt-?[\d]/i,
-    /bard/i,
+    /chatgpt-user/i,
+    /oai-searchbot/i,
+    /perplexitybot/i,
+    /perplexity-user/i,
+    /mistralai-user/i,
+    /claudebot/i,
     /claude/i,
     /anthropic/i,
-    /llm/i,
-    /huggingface/i,
-    /python-requests/i,
-    /httpx/i,
-    /curl/i
+    /bard/i,
+    /huggingface/i
   ]
   return llmBotPatterns.some(pattern => pattern.test(userAgent))
 }
