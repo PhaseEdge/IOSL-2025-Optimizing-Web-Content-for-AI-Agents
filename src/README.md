@@ -49,9 +49,10 @@ graph TD
 
     frontend/
     ├── css/
-    │   └── style.css (Furkan)
-    ├── pageColin.html
-    ├── pageFurkan.html
+    │   ├── furkan.css (Furkan)
+    |   └── colin.css (Colin)
+    ├── pageColin.html (Colin)
+    ├── pageFurkan.html (Furkan)
     ├── imaginaryCountry.html (Furkan)
     ├── imaginaryCountryJSONLD.html (Furkan)
     ├── imaginaryCountryMicrodata.html (Furkan)
@@ -67,7 +68,7 @@ graph TD
     │   │       ├── inlandArticleXMicrodata.html (Furkan)
     │   │       └── inlandArticleXJSONLD.html (Sofia)
     │   ├── experimental-pages/
-    │   │   ├──contentObfuscation.html (Colin)
+    │   │   ├──jsheavy.html (Colin)
     │   │   ├──experimental1.html (Colin)
     │   │   ├──interactiveContentEasy.html (Colin)
     │   │   ├──interactiveContentHard.html (Colin)
