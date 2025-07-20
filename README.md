@@ -19,6 +19,8 @@ Below are the instructions to set up and run both the frontend and backend compo
 
 The frontend is a Node.js application. Follow these steps to run it locally.
 
+**[Frontend README](./src/README.md)**
+
 **Prerequisites:**
 
 - Node.js
