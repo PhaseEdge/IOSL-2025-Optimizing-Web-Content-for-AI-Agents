@@ -1,24 +1,41 @@
+<!--
+  This HTML document presents a fictional country called "Tuberlinlandia" using embedded media.
+  It includes a video for quick facts, an image timeline of historical battles,
+  and an audio narration covering geography, culture, and other aspects.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Tuberlinlandia</title>
+
+  <!-- Link to external stylesheet for page styling -->
   <link rel="stylesheet" href="/css/colin.css" />
 </head>
+
 <body>
+  <!-- Page title -->
   <h1>Tuberlinlandia</h1>
+
+  <!-- Introduction paragraph describing the fictional country -->
   <p>
     Tuberlinlandia is a sovereign country located in the heart of the Balkans.
     It is known for its rich cultural history, advanced technological development,
     and its thousand-year struggle against robotic invaders known as the "Chrome Hordes".
   </p>
 
+  <!-- Embedded video with quick facts about Tuberlinlandia -->
   <p><strong>Quick facts video:</strong></p>
   <video controls>
+    <!-- Source of the MP4 video -->
     <source src="/images/factTable.mp4" type="video/mp4" />
+    <!-- Fallback message for browsers that don’t support video -->
     Your browser does not support the video tag.
   </video>
 
+  <!-- History section describing the country's background -->
   <h2>History</h2>
   <p>
     The earliest known settlements in Tuberlinlandia date back to 1500 BCE.
@@ -26,14 +43,21 @@
     when autonomous war machines invaded from the Rusted Steppes in the east.
   </p>
 
+  <!-- Embedded image showing a timeline of battles -->
   <p><strong>Timeline of important battles:</strong></p>
   <img src="/images/timeline.png" alt="Timeline of battles in Tuberlinlandia" />
 
+  <!-- Section covering general information about the country -->
   <h2>Geography, Government, Demographics, Economy, Culture</h2>
+
+  <!-- Embedded audio clip providing a narrated overview -->
   <p><strong>Listen to the audio overview:</strong></p>
   <audio controls>
+    <!-- Source of the MP3 audio file -->
     <source src="/images/TUBLandiaAudio.mp3" type="audio/mpeg" />
+    <!-- Fallback message for browsers that don’t support audio -->
     Your browser does not support the audio element.
   </audio>
 </body>
+
 </html>

@@ -179,7 +179,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/experimental1') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'experimental1.html')
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'experimental1.html')
     console.log('DEBUG LOG Serving /experimental1 route...')
     fs.readFile(filePath, (err, data) => {
       if (err) {
@@ -191,8 +191,8 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/semantic') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'semanticConfusion.html')
-    
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'semanticConfusion.html')
+
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -203,8 +203,8 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/media') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'mediaEmbeddings.html')
-    
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'mediaEmbeddings.html')
+
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -215,7 +215,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/wiki') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'tublWiki.html')
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'tublWiki.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -226,7 +226,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/jsheavy') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'contentObfuscation.html')
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'jsheavy.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -237,7 +237,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/interactiveEasy') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentEasy.html')
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'interactiveContentEasy.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
@@ -248,7 +248,7 @@ const server = http.createServer((req, res) => {
       }
     })
   } else if (req.url === '/interactiveHard') {
-    const filePath = path.join(__dirname, 'pages/experimental-pages' , 'interactiveContentHard.html')
+    const filePath = path.join(__dirname, 'pages/experimental-pages', 'interactiveContentHard.html')
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' })
