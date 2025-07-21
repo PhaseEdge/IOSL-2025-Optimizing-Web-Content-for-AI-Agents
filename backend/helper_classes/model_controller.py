@@ -40,6 +40,7 @@ class ModelProvider(Enum):
     GEMINI = "gemini"
     OPENAI = "openai"
     OLLAMA = "ollama"
+    DEEPSEEK = "deepseek"
 
 def get_env_var(name: str) -> str:
     """
@@ -90,7 +91,8 @@ class ModelController:
             ModelProvider.OLLAMA: 0
         }
 
-        self._init_provider(provider)
+        if provider != ModelProvider.DEEPSEEK:
+            self._init_provider(provider)
 
     def _load_keys(self, env_name: str):
         """
@@ -219,7 +221,13 @@ class ModelController:
                     self._next_api_key(ModelProvider.OLLAMA)
                 except Exception as e:
                     raise RuntimeError(f"Ollama-Error: {e}")
-
+        
+        elif self.provider == ModelProvider.DEEPSEEK:
+            import lmstudio as lms
+            model = lms.llm("deepseek/deepseek-r1-0528-qwen3-8b")
+            result = model.respond(prompt)
+            return result.content
+        
         else:
             raise ValueError(f"Unsupported provider: {self.provider}")
 

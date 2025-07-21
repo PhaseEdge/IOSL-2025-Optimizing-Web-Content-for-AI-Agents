@@ -27,11 +27,7 @@ PROMPT_PATH = "../src/prompts/summary_prompt.txt"
 OUTPUT_PATH = "../src/llm_outputs"
 WEBSITE_LIST = [
     "http://localhost:3000/wiki",
-    "http://localhost:3000/media",
-    "http://localhost:3000/jsheavy",
-    "http://localhost:3000/interactiveEasy",
-    "http://localhost:3000/interactiveHard",
-    "http://localhost:3000/semantic"
+    "http://localhost:3000/jsheavy"
 ]
 
 # Logging
